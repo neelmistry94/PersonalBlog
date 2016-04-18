@@ -13,3 +13,6 @@ git commit -m "Note about modifed files"
 git push origin master
 
 
+Pull
+git pull origin master
+	- Do this before you start changing files so you can see what updates other group members have made! 
