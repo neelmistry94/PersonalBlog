@@ -16,4 +16,15 @@ git add [list of files you have modified] / git add *
 git commit -m "Note about modifed files"
 git push origin master
 
+Lets all do work on our own branches....
 
+git checkout -b Bens_Branch
+	- Name it your name and branch, not Bens_Branch....That is me
+git status
+	- Should show that you are on your branch, not the master branch
+git add
+	- Same as above
+git commit -m "Message to coders"
+git push --set-upstream origin Bens_Branch
+	 - Instructions to set origin should be set at the top of this page
+	 - Now whenever you are on your own branch, git push after adding and commiting should suffice
