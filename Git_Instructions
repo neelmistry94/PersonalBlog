@@ -6,6 +6,10 @@ git remote add origin https://github.com/neelmistry94/PersonalBlog.git
 	- This sets origin as Neel's repo
 
 
+Pull
+git pull origin master
+	- Do this before you start changing files so you can see what updates other group members have made! 
+
 Push
 git add [list of files you have modified] / git add * 
 	- Star will add files in directory
@@ -13,6 +17,3 @@ git commit -m "Note about modifed files"
 git push origin master
 
 
-Pull
-git pull origin master
-	- Do this before you start changing files so you can see what updates other group members have made! 
