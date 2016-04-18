@@ -1,0 +1,15 @@
+~~~~~~~~~~~~~~~~~~~~~~~ Set up and push/pull instructions ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+git init
+	- Do this in the directory you will be holding project files
+git remote add origin https://github.com/neelmistry94/PersonalBlog.git
+	- This sets origin as Neel's repo
+
+
+Push
+git add [list of files you have modified] / git add * 
+	- Star will add files in directory
+git commit -m "Note about modifed files"
+git push origin master
+
+
