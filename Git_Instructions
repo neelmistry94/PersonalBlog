@@ -12,7 +12,7 @@ git pull origin master
 
 Push
 git add [list of files you have modified] / git add * 
-	- Star will add files in directory
+	- Star will add all files in directory
 git commit -m "Note about modifed files"
 git push origin master
 
