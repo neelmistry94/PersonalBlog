@@ -24,37 +24,9 @@ public class HomePageActivity extends AppCompatActivity {
         Button mButtonGallery = (Button)findViewById(R.id.OpenGallery);
         Button mButtonVideo = (Button)findViewById(R.id.VideoPost);
 
-        mButtonPhoto.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                        startActivityForResult(intent, 0);
-                    }
-                }
-        );
-
-        mButtonGallery.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);//
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),0);
-                    }
-                }
-        );
-
-        mButtonVideo.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
-                        startActivityForResult(intent, 0);
-                    }
-                }
-        );
+        openCameraForPhotos(mButtonPhoto);
+        openCameraForVideos(mButtonVideo);
+        openGallery(mButtonGallery);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +58,43 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openCameraForPhotos(Button mButtonPhoto){
+        mButtonPhoto.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
+    }
+
+    private void openCameraForVideos(Button mButtonGallery){
+        mButtonGallery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);//
+                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),0);
+                    }
+                }
+        );
+    }
+
+    private void openGallery(Button mButtonVideo){
+        mButtonVideo.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
     }
 }
