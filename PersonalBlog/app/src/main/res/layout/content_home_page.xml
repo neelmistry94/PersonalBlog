@@ -15,5 +15,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List View of blog" />
+        android:text="List View of blog"
+        android:id="@+id/tvInitial"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvInitial"
+        android:text="Make Photo Post"
+        android:id="@+id/PhotoPost"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PhotoPost"
+        android:text="Open Gallery"
+        android:id="@+id/OpenGallery"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/OpenGallery"
+        android:text="Make Video Post"
+        android:id="@+id/VideoPost"/>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package edu.umd.bferraro.personalblog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -17,6 +19,42 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Button mButtonPhoto = (Button)findViewById(R.id.PhotoPost);
+        Button mButtonGallery = (Button)findViewById(R.id.OpenGallery);
+        Button mButtonVideo = (Button)findViewById(R.id.VideoPost);
+
+        mButtonPhoto.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
+
+        mButtonGallery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);//
+                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),0);
+                    }
+                }
+        );
+
+        mButtonVideo.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
