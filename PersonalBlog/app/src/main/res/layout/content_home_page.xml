@@ -35,4 +35,10 @@
         android:layout_below="@+id/OpenGallery"
         android:text="Make Video Post"
         android:id="@+id/VideoPost"/>
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/VideoPost"
+        android:src="@mipmap/ic_launcher" />
 </RelativeLayout>

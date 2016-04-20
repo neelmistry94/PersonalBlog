@@ -1,7 +1,10 @@
 package edu.umd.bferraro.personalblog;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -80,7 +91,7 @@ public class HomePageActivity extends AppCompatActivity {
                         Intent intent = new Intent();
                         intent.setType("image/*");
                         intent.setAction(Intent.ACTION_GET_CONTENT);//
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),0);
+                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),1);
                     }
                 }
         );
@@ -92,9 +103,59 @@ public class HomePageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
-                        startActivityForResult(intent, 0);
+                        startActivityForResult(intent, 2);
                     }
                 }
         );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                File destination = new File(Environment.getExternalStorageDirectory(),
+                        System.currentTimeMillis() + ".jpg");
+                FileOutputStream fo;
+                try {
+                    destination.createNewFile();
+                    fo = new FileOutputStream(destination);
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ImageView photo = (ImageView) findViewById(R.id.ivImage);
+                photo.setImageBitmap(thumbnail);
+            }
+//            } else if (requestCode == SELECT_FILE) {
+//                Uri selectedImageUri = data.getData();
+//                String[] projection = { MediaColumns.DATA };
+//                CursorLoader cursorLoader = new CursorLoader(this,selectedImageUri, projection, null, null,
+//                        null);
+//                Cursor cursor =cursorLoader.loadInBackground();
+//                int column_index = cursor.getColumnIndexOrThrow(MediaColumns.DATA);
+//                cursor.moveToFirst();
+//                String selectedImagePath = cursor.getString(column_index);
+//                Bitmap bm;
+//                BitmapFactory.Options options = new BitmapFactory.Options();
+//                options.inJustDecodeBounds = true;
+//                BitmapFactory.decodeFile(selectedImagePath, options);
+//                final int REQUIRED_SIZE = 200;
+//                int scale = 1;
+//                while (options.outWidth / scale / 2 >= REQUIRED_SIZE
+//                        && options.outHeight / scale / 2 >= REQUIRED_SIZE)
+//                    scale *= 2;
+//                options.inSampleSize = scale;
+//                options.inJustDecodeBounds = false;
+//                bm = BitmapFactory.decodeFile(selectedImagePath, options);
+//                ivImage.setImageBitmap(bm);
+//            }
+        }
     }
 }
