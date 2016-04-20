@@ -1,7 +1,11 @@
 package edu.umd.bferraro.personalblog;
 
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -14,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,6 +26,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class HomePageActivity extends AppCompatActivity {
+    final int REQUEST_PHOTO = 0;
+    final int REQUEST_VIDEO = 1;
+    final int REQUEST_GALLERY = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,38 +83,39 @@ public class HomePageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                        startActivityForResult(intent, 0);
+                        startActivityForResult(intent, REQUEST_PHOTO);
                     }
                 }
         );
     }
 
-    private void openCameraForVideos(Button mButtonGallery){
+    private void openGallery(Button mButtonGallery){
         mButtonGallery.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);//
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"),1);
+                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        intent.setType("image/* video/*");
+                        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_GALLERY);
                     }
                 }
         );
     }
 
-    private void openGallery(Button mButtonVideo){
+    private void openCameraForVideos(Button mButtonVideo){
         mButtonVideo.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
-                        startActivityForResult(intent, 2);
+                        startActivityForResult(intent, REQUEST_VIDEO);
                     }
                 }
         );
     }
 
+    //The code for the following method was created using the following website as a reference
+    //http://www.theappguruz.com/blog/android-take-photo-camera-gallery-code-sample
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -130,32 +137,28 @@ public class HomePageActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
                 ImageView photo = (ImageView) findViewById(R.id.ivImage);
                 photo.setImageBitmap(thumbnail);
+            } else if (requestCode == REQUEST_GALLERY) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                // Get the cursor
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                // Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                ImageView photo = (ImageView) findViewById(R.id.ivImage);
+                // Set the Image in ImageView after decoding the String
+                photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+            } else if (requestCode == REQUEST_VIDEO) {
+
             }
-//            } else if (requestCode == SELECT_FILE) {
-//                Uri selectedImageUri = data.getData();
-//                String[] projection = { MediaColumns.DATA };
-//                CursorLoader cursorLoader = new CursorLoader(this,selectedImageUri, projection, null, null,
-//                        null);
-//                Cursor cursor =cursorLoader.loadInBackground();
-//                int column_index = cursor.getColumnIndexOrThrow(MediaColumns.DATA);
-//                cursor.moveToFirst();
-//                String selectedImagePath = cursor.getString(column_index);
-//                Bitmap bm;
-//                BitmapFactory.Options options = new BitmapFactory.Options();
-//                options.inJustDecodeBounds = true;
-//                BitmapFactory.decodeFile(selectedImagePath, options);
-//                final int REQUIRED_SIZE = 200;
-//                int scale = 1;
-//                while (options.outWidth / scale / 2 >= REQUIRED_SIZE
-//                        && options.outHeight / scale / 2 >= REQUIRED_SIZE)
-//                    scale *= 2;
-//                options.inSampleSize = scale;
-//                options.inJustDecodeBounds = false;
-//                bm = BitmapFactory.decodeFile(selectedImagePath, options);
-//                ivImage.setImageBitmap(bm);
-//            }
         }
     }
 }
