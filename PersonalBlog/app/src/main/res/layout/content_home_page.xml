@@ -41,4 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/VideoPost"
         android:src="@mipmap/ic_launcher" />
+    <VideoView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivImage"
+        android:id="@+id/VideoView"/>
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package edu.umd.bferraro.personalblog;
 
-import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.VideoView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -120,7 +120,7 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == 0) {
+            if (requestCode == REQUEST_PHOTO) {
                 Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
@@ -142,11 +142,11 @@ public class HomePageActivity extends AppCompatActivity {
                 photo.setImageBitmap(thumbnail);
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
+
                 String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
                 // Get the cursor
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
+                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
                 // Move to first row
                 cursor.moveToFirst();
 
@@ -157,7 +157,10 @@ public class HomePageActivity extends AppCompatActivity {
                 // Set the Image in ImageView after decoding the String
                 photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
             } else if (requestCode == REQUEST_VIDEO) {
-
+                Uri videoUri = data.getData();
+                VideoView video = (VideoView)findViewById(R.id.VideoView);
+                video.setVideoURI(videoUri);
+                video.start();
             }
         }
     }
