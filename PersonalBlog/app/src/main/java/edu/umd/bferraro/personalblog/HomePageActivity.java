@@ -143,19 +143,26 @@ public class HomePageActivity extends AppCompatActivity {
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
 
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                if(selectedImage.toString().contains("images")) {
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
-                // Get the cursor
-                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
-                // Move to first row
-                cursor.moveToFirst();
+                    // Get the cursor
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    // Move to first row
+                    cursor.moveToFirst();
 
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String imgDecodableString = cursor.getString(columnIndex);
-                cursor.close();
-                ImageView photo = (ImageView) findViewById(R.id.ivImage);
-                // Set the Image in ImageView after decoding the String
-                photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String imgDecodableString = cursor.getString(columnIndex);
+                    cursor.close();
+                    ImageView photo = (ImageView) findViewById(R.id.ivImage);
+                    // Set the Image in ImageView after decoding the String
+                    photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+                }
+                else if(selectedImage.toString().contains("video")){
+                    VideoView video = (VideoView)findViewById(R.id.VideoView);
+                    video.setVideoURI(selectedImage);
+                    video.start();
+                }
             } else if (requestCode == REQUEST_VIDEO) {
                 Uri videoUri = data.getData();
                 VideoView video = (VideoView)findViewById(R.id.VideoView);
