@@ -41,9 +41,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/VideoPost"
         android:src="@mipmap/ic_launcher" />
-    <VideoView
+    <FrameLayout
+        android:id="@+id/video_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivImage"
-        android:id="@+id/VideoView"/>
+        android:background="#000"
+        >
+        <VideoView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/VideoView"/>
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:src="@mipmap/ic_launcher"
+            />
+        <MediaController
+            android:id="@+id/mediaController"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </FrameLayout>
 </RelativeLayout>

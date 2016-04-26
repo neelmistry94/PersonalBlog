@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
@@ -29,6 +30,9 @@ public class HomePageActivity extends AppCompatActivity {
     final int REQUEST_PHOTO = 0;
     final int REQUEST_VIDEO = 1;
     final int REQUEST_GALLERY = 2;
+
+    VideoView video;
+    ImageButton mPlayButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,15 +163,33 @@ public class HomePageActivity extends AppCompatActivity {
                     photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
                 }
                 else if(selectedImage.toString().contains("video")){
-                    VideoView video = (VideoView)findViewById(R.id.VideoView);
+                    video = (VideoView)findViewById(R.id.VideoView);
                     video.setVideoURI(selectedImage);
-                    video.start();
+                    // Setup a play button to start the video
+                    mPlayButton = (ImageButton) findViewById(R.id.play_button);
+                    mPlayButton.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            video.start();
+                            mPlayButton.setVisibility(View.GONE);
+                        }
+                    });
                 }
             } else if (requestCode == REQUEST_VIDEO) {
                 Uri videoUri = data.getData();
-                VideoView video = (VideoView)findViewById(R.id.VideoView);
+                video = (VideoView)findViewById(R.id.VideoView);
                 video.setVideoURI(videoUri);
-                video.start();
+                // Setup a play button to start the video
+                mPlayButton = (ImageButton) findViewById(R.id.play_button);
+                mPlayButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        video.start();
+                        mPlayButton.setVisibility(View.GONE);
+                    }
+                });
             }
         }
     }
