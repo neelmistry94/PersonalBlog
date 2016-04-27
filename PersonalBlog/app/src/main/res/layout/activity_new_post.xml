@@ -70,6 +70,22 @@
         android:background="#303030"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        android:id="@+id/cameraAlertButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gallery"
+        android:id="@+id/galleryAlertButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_height="fill_parent"
@@ -120,6 +136,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 
 </RelativeLayout>

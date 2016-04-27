@@ -1,6 +1,8 @@
 package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -26,8 +28,6 @@ public class NewPostActivity extends Activity {
     final int REQUEST_VIDEO = 1;
     final int REQUEST_GALLERY = 2;
 
-    VideoView video;
-    ImageButton mPlayButton;
     ImageButton addPicture, addVideo, addAudio, addLocation;
     Button backButton, postButton;
     EditText title, postText;
@@ -60,10 +60,50 @@ public class NewPostActivity extends Activity {
 
         //The following methods will handle the creation of posts using photo or video
         addPicture = (ImageButton) findViewById(R.id.addPictureImageButton);
+        addPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(NewPostActivity.this).create();
+                alertDialog.setTitle("Choose Photo From");
+
+                alertDialog.setButton("Camera", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        openCameraForPhotos(addPicture);
+                    }
+                });
+                alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        openGallery();
+                    }
+                });
+
+
+                alertDialog.show();
+            }
+        });
+
         addVideo = (ImageButton) findViewById(R.id.addVideoImageButton);
-        openCameraForPhotos(addPicture);
-        openCameraForVideos(addVideo);
-        //openGallery(mButtonGallery);
+        addVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(NewPostActivity.this).create();
+                alertDialog.setTitle("Choose Video From");
+
+                alertDialog.setButton("Camera", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        openCameraForVideos(addVideo);
+                    }
+                });
+                alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        openGallery();
+                    }
+                });
+
+
+                alertDialog.show();
+            }
+        });
 
         addAudio = (ImageButton) findViewById(R.id.addAudioImageButton);
         addAudio.setOnClickListener(new View.OnClickListener() {
@@ -120,17 +160,10 @@ public class NewPostActivity extends Activity {
         );
     }
 
-    private void openGallery(Button mButtonGallery){
-        mButtonGallery.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        intent.setType("image/* video/*");
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_GALLERY);
-                    }
-                }
-        );
+    private void openGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/* video/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_GALLERY);
     }
 
     private void openCameraForVideos(ImageButton mButtonVideo){
