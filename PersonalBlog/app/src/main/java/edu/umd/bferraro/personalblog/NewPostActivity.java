@@ -2,6 +2,7 @@ package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ public class NewPostActivity extends Activity {
     ImageButton addPicture, addVideo, addAudio, addLocation;
     Button backButton, postButton;
     EditText title, postText;
+    VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,8 @@ public class NewPostActivity extends Activity {
             }
         });
 
-
+        videoView = (VideoView) findViewById(R.id.videoView);
+        //videoView.setVideoURI(Uri.parse("http://images.apple.com/media/us/ipad-pro/2016/8242d954_d694_42b8_b6b7_a871bba6ed54/films/feature/ipadpro-9-7inch-feature-cc-us-20160321_r848-9dwc.mov"));
     }
 
     @Override

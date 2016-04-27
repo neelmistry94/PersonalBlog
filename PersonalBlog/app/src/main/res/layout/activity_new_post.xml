@@ -87,7 +87,7 @@
                     android:src="@mipmap/add_picture" />
 
             </LinearLayout>
-            <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent">
+            <RelativeLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent">
 
                 <ImageButton
                     android:layout_width="match_parent"
@@ -96,7 +96,15 @@
                     android:scaleType="fitXY"
                     android:background="@null"
                     android:src="@mipmap/add_video" />
-            </LinearLayout>
+
+                <VideoView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/videoView"
+                    android:layout_gravity="center_vertical"
+                    android:alpha="0" />
+
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent">
             <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent">
