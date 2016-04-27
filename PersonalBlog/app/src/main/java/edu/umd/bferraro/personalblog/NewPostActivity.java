@@ -31,6 +31,7 @@ public class NewPostActivity extends Activity {
     VideoView newPostVideo;
     Button backButton, postButton;
     EditText title, postText;
+    boolean photoLoaded = false, videoLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +72,22 @@ public class NewPostActivity extends Activity {
                         openCameraForPhotos();
                     }
                 });
+
                 alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         openGallery();
                     }
                 });
 
+                if(photoLoaded) {
+                    alertDialog.setButton3("Remove Media", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            addPicture.setImageBitmap(null);
+                            addPicture.setImageResource(R.mipmap.add_picture);
+                            photoLoaded = false;
+                        }
+                    });
+                }
 
                 alertDialog.show();
             }
@@ -94,11 +105,22 @@ public class NewPostActivity extends Activity {
                         openCameraForVideos();
                     }
                 });
+
                 alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         openGallery();
                     }
                 });
+
+                if(videoLoaded) {
+                    alertDialog.setButton3("Remove Media", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            newPostVideo.setVideoURI(null);
+                            newPostVideo.setAlpha(0);
+                            videoLoaded = false;
+                        }
+                    });
+                }
 
                 alertDialog.show();
             }
@@ -189,6 +211,7 @@ public class NewPostActivity extends Activity {
                 }
 
                 addPicture.setImageBitmap(thumbnail);
+                photoLoaded = true;
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
 
@@ -205,12 +228,14 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+                    photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){
                     newPostVideo = (VideoView)findViewById(R.id.videoView);
                     newPostVideo.setVideoURI(selectedImage);
                     newPostVideo.setAlpha(1);
                     newPostVideo.start();
+                    videoLoaded = true;
                 }
             } else if (requestCode == REQUEST_VIDEO) {
                 Uri videoUri = data.getData();
@@ -218,6 +243,7 @@ public class NewPostActivity extends Activity {
                 newPostVideo.setVideoURI(videoUri);
                 newPostVideo.setAlpha(1);
                 newPostVideo.start();
+                videoLoaded = true;
             }
         }
     }
