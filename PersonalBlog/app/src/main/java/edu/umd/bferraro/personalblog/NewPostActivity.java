@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,6 +28,7 @@ public class NewPostActivity extends Activity {
     final int REQUEST_GALLERY = 2;
 
     ImageButton addPicture, addVideo, addAudio, addLocation;
+    VideoView newPostVideo;
     Button backButton, postButton;
     EditText title, postText;
 
@@ -121,7 +121,8 @@ public class NewPostActivity extends Activity {
             }
         });
 
-
+//        videoView = (VideoView) findViewById(R.id.videoView);
+//        videoView.setVideoURI(Uri.parse("http://images.apple.com/media/us/ipad-pro/2016/8242d954_d694_42b8_b6b7_a871bba6ed54/films/feature/ipadpro-9-7inch-feature-cc-us-20160321_r848-9dwc.mov"));
     }
 
     @Override
@@ -206,15 +207,18 @@ public class NewPostActivity extends Activity {
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
                 }
                 else if(selectedImage.toString().contains("video")){
-
+                    newPostVideo = (VideoView)findViewById(R.id.videoView);
+                    newPostVideo.setVideoURI(selectedImage);
+                    newPostVideo.setAlpha(1);
+                    newPostVideo.start();
                 }
             } else if (requestCode == REQUEST_VIDEO) {
                 Uri videoUri = data.getData();
-                addVideo.setImageURI(videoUri);
+                newPostVideo = (VideoView)findViewById(R.id.videoView);
+                newPostVideo.setVideoURI(videoUri);
+                newPostVideo.setAlpha(1);
+                newPostVideo.start();
             }
         }
     }
-
-
-
 }
