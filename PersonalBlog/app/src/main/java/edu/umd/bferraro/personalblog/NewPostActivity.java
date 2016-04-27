@@ -68,7 +68,7 @@ public class NewPostActivity extends Activity {
 
                 alertDialog.setButton("Camera", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        openCameraForPhotos(addPicture);
+                        openCameraForPhotos();
                     }
                 });
                 alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
@@ -91,7 +91,7 @@ public class NewPostActivity extends Activity {
 
                 alertDialog.setButton("Camera", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        openCameraForVideos(addVideo);
+                        openCameraForVideos();
                     }
                 });
                 alertDialog.setButton2("Gallery", new DialogInterface.OnClickListener() {
@@ -99,7 +99,6 @@ public class NewPostActivity extends Activity {
                         openGallery();
                     }
                 });
-
 
                 alertDialog.show();
             }
@@ -148,16 +147,9 @@ public class NewPostActivity extends Activity {
     }
 
 
-    private void openCameraForPhotos(ImageButton mButtonPhoto){
-        mButtonPhoto.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                        startActivityForResult(intent, REQUEST_PHOTO);
-                    }
-                }
-        );
+    private void openCameraForPhotos(){
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivityForResult(intent, REQUEST_PHOTO);
     }
 
     private void openGallery(){
@@ -166,16 +158,9 @@ public class NewPostActivity extends Activity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_GALLERY);
     }
 
-    private void openCameraForVideos(ImageButton mButtonVideo){
-        mButtonVideo.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
-                        startActivityForResult(intent, REQUEST_VIDEO);
-                    }
-                }
-        );
+    private void openCameraForVideos(){
+        Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
+        startActivityForResult(intent, REQUEST_VIDEO);
     }
 
     //The code for the following method was created using the following website as a reference
