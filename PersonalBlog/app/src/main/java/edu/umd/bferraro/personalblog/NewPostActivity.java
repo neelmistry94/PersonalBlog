@@ -169,8 +169,7 @@ public class NewPostActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                ImageView photo = (ImageView) findViewById(R.id.ivImage);
-                photo.setImageBitmap(thumbnail);
+                addPicture.setImageBitmap(thumbnail);
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
 
@@ -185,38 +184,15 @@ public class NewPostActivity extends Activity {
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String imgDecodableString = cursor.getString(columnIndex);
                     cursor.close();
-                    ImageView photo = (ImageView) findViewById(R.id.ivImage);
-                    // Set the Image in ImageView after decoding the String
-                    photo.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+
+                    addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
                 }
                 else if(selectedImage.toString().contains("video")){
-                    video = (VideoView)findViewById(R.id.VideoView);
-                    video.setVideoURI(selectedImage);
-                    // Setup a play button to start the video
-                    mPlayButton = (ImageButton) findViewById(R.id.play_button);
-                    mPlayButton.setOnClickListener(new View.OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            video.start();
-                            mPlayButton.setVisibility(View.GONE);
-                        }
-                    });
                 }
             } else if (requestCode == REQUEST_VIDEO) {
                 Uri videoUri = data.getData();
-                video = (VideoView)findViewById(R.id.VideoView);
-                video.setVideoURI(videoUri);
-                // Setup a play button to start the video
-                mPlayButton = (ImageButton) findViewById(R.id.play_button);
-                mPlayButton.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        video.start();
-                        mPlayButton.setVisibility(View.GONE);
-                    }
-                });
+                addVideo.setImageURI(videoUri);
             }
         }
     }

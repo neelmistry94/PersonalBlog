@@ -45,7 +45,7 @@ public class HomePageActivity extends Activity {
             }
         });
 
-        backupButton.setOnClickListener(new View.OnClickListener() {
+        restoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // TODO - Implement restore button
 

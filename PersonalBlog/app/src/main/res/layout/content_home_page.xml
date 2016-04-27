@@ -12,57 +12,57 @@
     tools:context="edu.umd.bferraro.personalblog.HomePageActivity"
     tools:showIn="@layout/activity_home_page">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="List View of blog"
-        android:id="@+id/tvInitial"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvInitial"
-        android:text="Make Photo Post"
-        android:id="@+id/PhotoPost"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PhotoPost"
-        android:text="Open Gallery"
-        android:id="@+id/OpenGallery"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/OpenGallery"
-        android:text="Make Video Post"
-        android:id="@+id/VideoPost"/>
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/VideoPost"
-        android:src="@mipmap/ic_launcher" />
-    <FrameLayout
-        android:id="@+id/video_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivImage"
-        android:background="#000"
-        >
-        <VideoView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/VideoView"/>
-        <ImageButton
-            android:id="@+id/play_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:src="@mipmap/ic_launcher"
-            />
-        <MediaController
-            android:id="@+id/mediaController"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-    </FrameLayout>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="List View of blog"-->
+        <!--android:id="@+id/tvInitial"/>-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tvInitial"-->
+        <!--android:text="Make Photo Post"-->
+        <!--android:id="@+id/PhotoPost"/>-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/PhotoPost"-->
+        <!--android:text="Open Gallery"-->
+        <!--android:id="@+id/OpenGallery"/>-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/OpenGallery"-->
+        <!--android:text="Make Video Post"-->
+        <!--android:id="@+id/VideoPost"/>-->
+    <!--<ImageView-->
+        <!--android:id="@+id/ivImage"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/VideoPost"-->
+        <!--android:src="@mipmap/ic_launcher" />-->
+    <!--<FrameLayout-->
+        <!--android:id="@+id/video_frame"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/ivImage"-->
+        <!--android:background="#000"-->
+        <!-->-->
+        <!--<VideoView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:id="@+id/VideoView"/>-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/play_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--android:src="@mipmap/ic_launcher"-->
+            <!--/>-->
+        <!--<MediaController-->
+            <!--android:id="@+id/mediaController"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+    <!--</FrameLayout>-->
 </RelativeLayout>
