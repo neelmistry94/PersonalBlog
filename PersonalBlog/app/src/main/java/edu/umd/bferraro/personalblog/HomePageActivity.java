@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import android.widget.Button;
 
 public class HomePageActivity extends Activity {
 
@@ -14,8 +15,6 @@ public class HomePageActivity extends Activity {
     ListView postListView;
     Button newPostButton, backupButton,restoreButton;
     TextView noPostsTextView;
-
-
     Intent newPostIntent;
 
     @Override
@@ -24,7 +23,7 @@ public class HomePageActivity extends Activity {
         setContentView(R.layout.activity_home_page);
 
         postListView = (ListView) findViewById(R.id.postListView);
-        newPostButton = (Button) findViewById(R.id.postTitleView);
+        newPostButton = (Button) findViewById(R.id.newPostTextView);
         backupButton = (Button) findViewById(R.id.backup);
         restoreButton = (Button) findViewById(R.id.restore);
         noPostsTextView = (TextView) findViewById(R.id.noPosts);
@@ -37,7 +36,9 @@ public class HomePageActivity extends Activity {
             }
         });
 
+
         backupButton.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View view) {
                 // TODO - Implement backup button
 
@@ -45,10 +46,9 @@ public class HomePageActivity extends Activity {
             }
         });
 
-        backupButton.setOnClickListener(new View.OnClickListener() {
+        restoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // TODO - Implement restore button
-
 
             }
         });
