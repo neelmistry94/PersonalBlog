@@ -31,24 +31,17 @@ public class NewPostActivity extends Activity {
     Button backButton, postButton;
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false;
+    Intent viewPostIntent;
+
+    //These variables are used to create a new ViewPost
+    String titleStr, textStr;
+    Bitmap photo;
+    Uri videoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
-
-        backButton = (Button) findViewById(R.id.backButton);
-        postButton = (Button) findViewById(R.id.postButton);
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = getIntent();
-                // TODO - implement post button
-
-                setResult(Activity.RESULT_OK, intent);
-                finish();
-            }
-        });
 
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
@@ -73,7 +66,7 @@ public class NewPostActivity extends Activity {
                     }
                 });
 
-                if(photoLoaded) {
+                if (photoLoaded) {
                     alertDialog.setButton3("Remove Media", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             addPicture.setImageBitmap(null);
@@ -135,6 +128,30 @@ public class NewPostActivity extends Activity {
                 // TODO - implement addLocation button
 
 
+            }
+        });
+
+        backButton = (Button) findViewById(R.id.backButton);
+        postButton = (Button) findViewById(R.id.postButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        postButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                titleStr = title.getText().toString();
+                textStr = postText.getText().toString();
+                ViewPost newViewPost = new ViewPost(titleStr, textStr, photo, videoUri);
+
+                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
+                viewPostIntent.putExtra("ViewPost", newViewPost);
+                startActivityForResult(viewPostIntent, 0);
+
+                Toast.makeText(NewPostActivity.this, "Post Successful", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
@@ -202,6 +219,7 @@ public class NewPostActivity extends Activity {
                 }
 
                 addPicture.setImageBitmap(thumbnail);
+                photo = thumbnail;
                 photoLoaded = true;
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
@@ -219,6 +237,7 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+                    photo = BitmapFactory.decodeFile(imgDecodableString);
                     photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){
@@ -226,14 +245,16 @@ public class NewPostActivity extends Activity {
                     newPostVideo.setVideoURI(selectedImage);
                     newPostVideo.setAlpha(1);
                     newPostVideo.start();
+                    videoUri = selectedImage;
                     videoLoaded = true;
                 }
             } else if (requestCode == REQUEST_VIDEO) {
-                Uri videoUri = data.getData();
+                Uri videoUriLoc = data.getData();
                 newPostVideo = (VideoView)findViewById(R.id.videoView);
-                newPostVideo.setVideoURI(videoUri);
+                newPostVideo.setVideoURI(videoUriLoc);
                 newPostVideo.setAlpha(1);
                 newPostVideo.start();
+                videoUri = videoUriLoc;
                 videoLoaded = true;
             }
         }

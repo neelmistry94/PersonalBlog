@@ -23,7 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Post 1"
         android:id="@+id/postTitleView"
         android:textSize="40dp"
         android:layout_alignParentTop="true"
