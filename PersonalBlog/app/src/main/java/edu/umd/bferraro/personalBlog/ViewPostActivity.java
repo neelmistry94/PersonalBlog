@@ -2,10 +2,8 @@ package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,8 +79,13 @@ public class ViewPostActivity extends Activity {
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                viewPostIntent = new Intent(ViewPostActivity.this, DeletePopWindow.class);
-                startActivityForResult(viewPostIntent, 0);
+                finish();
+                textView = null;
+                titleView = null;
+                imageView = null;
+                videoView = null;
+                viewPost = null;
+                Toast.makeText(ViewPostActivity.this, "Post Deleted", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -18,6 +18,7 @@ public class HomePageActivity extends ListActivity {
     Button newPostButton, backupButton,restoreButton;
     TextView noPostsTextView;
     Intent newPostIntent;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,16 +82,19 @@ public class HomePageActivity extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        ArrayList<String> listItems=new ArrayList<String>();
-        listItems.add("Post 1");
+        if(resultCode == 0) {
+            ArrayList<String> listItems = new ArrayList<String>();
+            listItems.add("Post 1");
 
-        //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
-        ArrayAdapter<String> adapter;
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                listItems);
-        setListAdapter(adapter);
-        noPostsTextView.setVisibility(View.GONE);
+            //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
+            adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    listItems);
+            setListAdapter(adapter);
+            noPostsTextView.setVisibility(View.GONE);
+        } else if (resultCode == 2){
+            adapter.clear();
+        }
     }
 
     @Override
@@ -103,6 +107,6 @@ public class HomePageActivity extends ListActivity {
 
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);
-        startActivityForResult(viewPostIntent, 0);
+        startActivityForResult(viewPostIntent, 2);
     }
 }
