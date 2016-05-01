@@ -7,11 +7,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.database.Cursor;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.util.Log;
 import android.widget.TextView;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -26,8 +28,10 @@ public class HomePageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button mButton = (Button)findViewById(R.id.name_button);
+        Button mclearButton = (Button)findViewById(R.id.clear_button);
         final EditText mEditText = (EditText)findViewById(R.id.name);
         final TextView tvDisplay = (TextView)findViewById(R.id.textViewDisplay);
+
 
         mButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -36,6 +40,28 @@ public class HomePageActivity extends AppCompatActivity {
                         name = mEditText.getText().toString();
                         dbManager.addName(name);
                         tvDisplay.setText(dbManager.getName(1));
+
+
+                        Cursor c = dbManager.readAllNames();
+                        String array[] = new String[c.getCount()];
+                        int i = 0;
+
+                       Log.i("Personal Blog", Integer.toString(c.getCount()));
+
+                        while (c.moveToNext()) {
+                            array[i] = c.getString(1);
+                            i++;
+                            c.moveToNext();
+                        }
+
+
+                        for (i = 0; i < c.getCount(); i++) {
+                            System.out.println("ARRAY: " + array[i]);
+
+                        }
+
+                        c.close();
+
                     }
                 }
         );
@@ -48,6 +74,22 @@ public class HomePageActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+
+
+        mclearButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("Personal Blog", "REMOVING ALL ENTRIES");
+                        dbManager.clearAll();
+                    }
+                }
+        );
+
+
+
     }
 
     @Override

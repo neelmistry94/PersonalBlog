@@ -31,6 +31,15 @@
         android:id="@+id/name_button"
         android:layout_below="@+id/name"
         android:text="Save Name"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear_button"
+        android:layout_below="@+id/textViewDisplay"
+        android:text="Clear DB"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
