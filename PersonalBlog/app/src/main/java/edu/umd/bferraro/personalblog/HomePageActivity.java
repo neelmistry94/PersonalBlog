@@ -1,16 +1,21 @@
 package edu.umd.bferraro.personalblog;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.database.Cursor;
+import android.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
@@ -18,19 +23,29 @@ import android.widget.TextView;
 
 public class HomePageActivity extends AppCompatActivity {
     String name;
-    DatabaseManager dbManager = new DatabaseManager(this);
+    DatabaseManager dbManager;
+    private SimpleCursorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+     //   setSupportActionBar(toolbar);
 
         Button mButton = (Button)findViewById(R.id.name_button);
         Button mclearButton = (Button)findViewById(R.id.clear_button);
         final EditText mEditText = (EditText)findViewById(R.id.name);
         final TextView tvDisplay = (TextView)findViewById(R.id.textViewDisplay);
+
+         dbManager = new DatabaseManager(this);
+
+//        Cursor c = dbManager.readAllNames();
+//        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
+//                dbManager.columns, new int[] {R.id.id_col, R.id.name_col},
+//                0);
+
+     //   setListAdapter(mAdapter);
 
 
         mButton.setOnClickListener(
@@ -38,29 +53,18 @@ public class HomePageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         name = mEditText.getText().toString();
+
+                        //SQLiteDatabase sql = dbManager.getDB();
+                        //dbManager.onUpgrade(sql, 0, 1);
                         dbManager.addName(name);
-                        tvDisplay.setText(dbManager.getName(1));
+
+//                        tvDisplay.setText(dbManager.getName(3));
 
 
-                        Cursor c = dbManager.readAllNames();
-                        String array[] = new String[c.getCount()];
-                        int i = 0;
+                        Log.i("Personal Blog", "DB COUNT: " + Integer.toString(dbManager.getDBCount()));
 
-                       Log.i("Personal Blog", Integer.toString(c.getCount()));
-
-                        while (c.moveToNext()) {
-                            array[i] = c.getString(1);
-                            i++;
-                            c.moveToNext();
-                        }
-
-
-                        for (i = 0; i < c.getCount(); i++) {
-                            System.out.println("ARRAY: " + array[i]);
-
-                        }
-
-                        c.close();
+                      //  c.close();
+                      //  db.close();
 
                     }
                 }
@@ -84,6 +88,7 @@ public class HomePageActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Log.d("Personal Blog", "REMOVING ALL ENTRIES");
                         dbManager.clearAll();
+                        dbManager.deleteDatabase();
                     }
                 }
         );
