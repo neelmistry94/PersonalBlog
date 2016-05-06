@@ -4,11 +4,6 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.database.Cursor;
 import android.widget.SimpleCursorAdapter;
 import android.view.View;
@@ -21,22 +16,39 @@ import android.widget.EditText;
 import android.util.Log;
 import android.widget.TextView;
 
-public class HomePageActivity extends AppCompatActivity {
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
+import android.widget.Button;
+
+import java.util.ArrayList;
+
+public class HomePageActivity extends ListActivity {
+
+    ListView postListView;
+    Button newPostButton, backupButton,restoreButton;
+    TextView noPostsTextView;
+    Intent newPostIntent;
+    ArrayAdapter<String> adapter;
     String name;
     DatabaseManager dbManager;
     private SimpleCursorAdapter mAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
      //   setSupportActionBar(toolbar);
 
-        Button mButton = (Button)findViewById(R.id.name_button);
-        Button mclearButton = (Button)findViewById(R.id.clear_button);
-        final EditText mEditText = (EditText)findViewById(R.id.name);
-        final TextView tvDisplay = (TextView)findViewById(R.id.textViewDisplay);
+
 
          dbManager = new DatabaseManager(this);
 
@@ -48,50 +60,36 @@ public class HomePageActivity extends AppCompatActivity {
      //   setListAdapter(mAdapter);
 
 
-        mButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        name = mEditText.getText().toString();
+        postListView = getListView();
+        newPostButton = (Button) findViewById(R.id.newPostTextView);
+        backupButton = (Button) findViewById(R.id.backup);
+        restoreButton = (Button) findViewById(R.id.restore);
+        noPostsTextView = (TextView) findViewById(R.id.noPosts);
 
-                        //SQLiteDatabase sql = dbManager.getDB();
-                        //dbManager.onUpgrade(sql, 0, 1);
-                        dbManager.addName(name);
-
-//                        tvDisplay.setText(dbManager.getName(3));
-
-
-                        Log.i("Personal Blog", "DB COUNT: " + Integer.toString(dbManager.getDBCount()));
-
-                      //  c.close();
-                      //  db.close();
-
-                    }
-                }
-        );
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
+        newPostButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                newPostIntent = new Intent(HomePageActivity.this, NewPostActivity.class);
+                startActivityForResult(newPostIntent, 0);
             }
         });
 
 
+        backupButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                // TODO - Implement backup button
 
 
-        mclearButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("Personal Blog", "REMOVING ALL ENTRIES");
-                        dbManager.clearAll();
-                        dbManager.deleteDatabase();
-                    }
-                }
-        );
+            }
+        });
+
+        restoreButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // TODO - Implement restore button
+
+            }
+        });
+
 
 
 
@@ -117,5 +115,37 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == 0) {
+            ArrayList<String> listItems = new ArrayList<String>();
+            listItems.add("Post 1");
+
+            //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
+            adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    listItems);
+            setListAdapter(adapter);
+            noPostsTextView.setVisibility(View.GONE);
+        } else if (resultCode == 2){
+            adapter.clear();
+        }
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id)
+    {
+        // TODO Auto-generated method stub
+        super.onListItemClick(l, v, position, id);
+
+        ViewPost newViewPost = new ViewPost("Post 1", "Here is some text for my first post", null, null);
+
+        Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
+        viewPostIntent.putExtra("ViewPost", newViewPost);
+        startActivityForResult(viewPostIntent, 2);
     }
 }
