@@ -33,6 +33,7 @@ import android.util.Log;
 import android.content.pm.PackageManager;
 import android.Manifest;
 
+
 public class NewPostActivity extends Activity {
     final int REQUEST_PHOTO = 0;
     final int REQUEST_VIDEO = 1;
@@ -73,68 +74,15 @@ public class NewPostActivity extends Activity {
 
 
 
-        // Check Permissions Now
-        if (ContextCompat.checkSelfPermission(NewPostActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            Log.e(TAG, "GET PERM");
-
-            ActivityCompat.requestPermissions(NewPostActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    1);
-
-            int i = ContextCompat.checkSelfPermission(NewPostActivity.this, Manifest.permission.CAMERA);
-
-            Log.e(TAG, Integer.toString(i));
-
-        }
-
-
-
-
 
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
-        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+//        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // BEST READING
-        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
+//        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
 
-        mLocationListener = new LocationListener() {
-
-            // Called back when location changes
-
-            public void onLocationChanged(Location location) {
-
-                // Determine whether new location is better than current best
-                // estimate
-
-                if (null == mBestReading
-                        || location.getAccuracy() < mBestReading.getAccuracy()) {
-
-                    // Update best estimate
-                    mBestReading = location;
-
-                    if (mBestReading.getAccuracy() < MIN_ACCURACY)
-                        mLocationManager.removeUpdates(mLocationListener);
-
-                }
-            }
-
-            public void onStatusChanged(String provider, int status,
-                                        Bundle extras) {
-                // NA
-            }
-
-            public void onProviderEnabled(String provider) {
-                // NA
-            }
-
-            public void onProviderDisabled(String provider) {
-                // NA
-            }
-        };
 
         //The following methods will handle the creation of posts using photo or video
         addPicture = (ImageButton) findViewById(R.id.addPictureImageButton);
@@ -208,6 +156,11 @@ public class NewPostActivity extends Activity {
         addAudio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // TODO - implement addAudio button
+
+                Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
+
+                startActivity(i);
+
 
 
             }
@@ -286,91 +239,6 @@ public class NewPostActivity extends Activity {
         startActivityForResult(intent, REQUEST_VIDEO);
     }
 
-
-
-
-    private Location bestLastKnownLocation(float minAccuracy, long maxAge) {
-
-        Location bestResult = null;
-        float bestAccuracy = Float.MAX_VALUE;
-        long bestAge = Long.MIN_VALUE;
-
-        List<String> matchingProviders = mLocationManager.getAllProviders();
-
-        for (String provider : matchingProviders) {
-
-            Location location = mLocationManager.getLastKnownLocation(provider);
-
-            if (location != null) {
-
-                float accuracy = location.getAccuracy();
-                long time = location.getTime();
-
-                if (accuracy < bestAccuracy) {
-
-                    bestResult = location;
-                    bestAccuracy = accuracy;
-                    bestAge = time;
-
-                }
-            }
-        }
-
-        // Return best reading or null
-        if (bestAccuracy > minAccuracy
-                || (System.currentTimeMillis() - bestAge) > maxAge) {
-            return null;
-        } else {
-            return bestResult;
-        }
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (null == mBestReading
-                || mBestReading.getAccuracy() > MIN_LAST_READ_ACCURACY
-                || mBestReading.getTime() < System.currentTimeMillis()
-                - TWO_MIN) {
-
-            // Register for network location updates
-            if (null != mLocationManager
-                    .getProvider(LocationManager.NETWORK_PROVIDER)) {
-
-                mLocationManager.requestLocationUpdates(
-                        LocationManager.NETWORK_PROVIDER, POLLING_FREQ,
-                        MIN_DISTANCE, mLocationListener);
-
-            }
-
-            // Register for GPS location updates
-            if (null != mLocationManager
-                    .getProvider(LocationManager.GPS_PROVIDER)) {
-
-                mLocationManager.requestLocationUpdates(
-                        LocationManager.GPS_PROVIDER, POLLING_FREQ,
-                        MIN_DISTANCE, mLocationListener);
-
-            }
-
-            // Schedule a runnable to unregister location listeners
-            Executors.newScheduledThreadPool(1).schedule(new Runnable() {
-
-                @Override
-                public void run() {
-
-
-                    mLocationManager.removeUpdates(mLocationListener);
-
-                }
-            }, MEASURE_TIME, TimeUnit.MILLISECONDS);
-        }
-
-
-
-    }
 
     //The code for the following method was created using the following website as a reference
     //http://www.theappguruz.com/blog/android-take-photo-camera-gallery-code-sample
