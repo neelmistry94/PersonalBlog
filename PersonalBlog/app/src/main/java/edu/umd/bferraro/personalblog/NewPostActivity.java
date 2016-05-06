@@ -1,7 +1,9 @@
 package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,16 +17,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import android.location.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executors;
+
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.content.pm.PackageManager;
+import android.Manifest;
+
 
 public class NewPostActivity extends Activity {
     final int REQUEST_PHOTO = 0;
     final int REQUEST_VIDEO = 1;
     final int REQUEST_GALLERY = 2;
+
+    // Location
+    private static final long ONE_MIN = 1000 * 60;
+    private static final long TWO_MIN = ONE_MIN * 2;
+    private static final long FIVE_MIN = ONE_MIN * 5;
+    private static final long MEASURE_TIME = 1000 * 30;
+    private static final long POLLING_FREQ = 1000 * 10;
+    private static final float MIN_ACCURACY = 25.0f;
+    private static final float MIN_LAST_READ_ACCURACY = 500.0f;
+    private static final float MIN_DISTANCE = 10.0f;
+
 
     ImageButton addPicture, addVideo, addAudio, addLocation;
     VideoView newPostVideo;
@@ -32,6 +56,11 @@ public class NewPostActivity extends Activity {
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false;
     Intent viewPostIntent;
+    private LocationManager mLocationManager;
+    private LocationListener mLocationListener;
+    private Location mBestReading;
+
+    private final String TAG = "NewPostActivity";
 
     //These variables are used to create a new ViewPost
     String titleStr, textStr;
@@ -43,8 +72,17 @@ public class NewPostActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
+
+
+
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
+
+//        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // BEST READING
+//        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
+
+
 
         //The following methods will handle the creation of posts using photo or video
         addPicture = (ImageButton) findViewById(R.id.addPictureImageButton);
@@ -119,6 +157,11 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 // TODO - implement addAudio button
 
+                Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
+
+                startActivity(i);
+
+
 
             }
         });
@@ -126,6 +169,8 @@ public class NewPostActivity extends Activity {
         addLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // TODO - implement addLocation button
+
+
 
 
             }
@@ -193,6 +238,7 @@ public class NewPostActivity extends Activity {
         Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
         startActivityForResult(intent, REQUEST_VIDEO);
     }
+
 
     //The code for the following method was created using the following website as a reference
     //http://www.theappguruz.com/blog/android-take-photo-camera-gallery-code-sample
