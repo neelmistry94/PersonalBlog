@@ -34,9 +34,7 @@ public class NewPostActivity extends Activity {
     Intent viewPostIntent;
 
     //These variables are used to create a new ViewPost
-    String titleStr, textStr;
-    Bitmap photo;
-    Uri videoUri;
+    String titleStr, textStr, photoPath, videoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,10 +142,11 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photo, videoUri);
+                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath);
 
                 viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
                 viewPostIntent.putExtra("ViewPost", newViewPost);
+
                 startActivityForResult(viewPostIntent, 0);
 
                 Toast.makeText(NewPostActivity.this, "Post Successful", Toast.LENGTH_LONG).show();
@@ -219,7 +218,7 @@ public class NewPostActivity extends Activity {
                 }
 
                 addPicture.setImageBitmap(thumbnail);
-                photo = thumbnail;
+                photoPath = destination.getPath() + destination.getName();
                 photoLoaded = true;
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
@@ -237,7 +236,7 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
-                    photo = BitmapFactory.decodeFile(imgDecodableString);
+                    photoPath = getRealPathFromURI(selectedImage);
                     photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){
@@ -245,7 +244,7 @@ public class NewPostActivity extends Activity {
                     newPostVideo.setVideoURI(selectedImage);
                     newPostVideo.setAlpha(1);
                     newPostVideo.start();
-                    videoUri = selectedImage;
+                    videoPath = getRealPathFromURI(selectedImage);
                     videoLoaded = true;
                 }
             } else if (requestCode == REQUEST_VIDEO) {
@@ -254,9 +253,16 @@ public class NewPostActivity extends Activity {
                 newPostVideo.setVideoURI(videoUriLoc);
                 newPostVideo.setAlpha(1);
                 newPostVideo.start();
-                videoUri = videoUriLoc;
+                videoPath = getRealPathFromURI(videoUriLoc);
                 videoLoaded = true;
             }
         }
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
     }
 }
