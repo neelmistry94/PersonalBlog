@@ -64,8 +64,5 @@
                 android:text="Play Voice Memo" />
 
         </LinearLayout>
-
     </ScrollView>
-
-
 </RelativeLayout>

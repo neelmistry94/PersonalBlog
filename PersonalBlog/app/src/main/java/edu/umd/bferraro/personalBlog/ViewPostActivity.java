@@ -76,7 +76,7 @@ public class ViewPostActivity extends Activity {
             videoView.setVisibility(View.GONE);
         } else {
             videoView.setVisibility(View.VISIBLE);
-            videoView.setVideoURI(Uri.parse(new File(viewPost.getVideoPath()).toString()));
+            videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
             videoView.start();
         }
 
@@ -104,12 +104,12 @@ public class ViewPostActivity extends Activity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
-                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
-                if(mPlayer.isPlaying()){
-                    mPlayer.pause();
-                } else {
-                    mPlayer.start();
-                }
+//                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
+//                if(mPlayer.isPlaying()){
+//                    mPlayer.pause();
+//                } else {
+//                    mPlayer.start();
+//                }
             }
         });
 
