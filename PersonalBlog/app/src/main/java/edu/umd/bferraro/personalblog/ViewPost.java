@@ -9,15 +9,13 @@ import java.io.Serializable;
  */
 
 public class ViewPost implements Serializable{
-    private String title, textPost;
-    private Bitmap photo;
-    private Uri videoUri;
+    private String title, textPost, photoPath, videoPath;
 
-    public ViewPost(String titleParam, String textParam, Bitmap photoParam, Uri videoParam){
+    public ViewPost(String titleParam, String textParam, String photoParam, String videoParam){
         title = titleParam;
         textPost = textParam;
-        photo = photoParam;
-        videoUri = videoParam;
+        photoPath = photoParam;
+        videoPath = videoParam;
     }
 
     public String getTitle(){
@@ -28,12 +26,12 @@ public class ViewPost implements Serializable{
         return textPost;
     }
 
-    public Bitmap getPhoto(){
-        return photo;
+    public String getPhotoPath(){
+        return photoPath;
     }
 
-    public Uri getVideoUri(){
-        return videoUri;
+    public String getVideoPath(){
+        return videoPath;
     }
 
     public void setTitle(String titleParam){
@@ -44,12 +42,12 @@ public class ViewPost implements Serializable{
         textPost = textParam;
     }
 
-    public void setPhoto(Bitmap photoParam){
-        photo = photoParam;
+    public void setPhotoPath(String photoParam){
+        photoPath = photoParam;
     }
 
-    public void setVideoUri(Uri videoParam){
-        videoUri = videoParam;
+    public void setVideoPath(String videoParam){
+        videoPath = videoParam;
     }
 
 }

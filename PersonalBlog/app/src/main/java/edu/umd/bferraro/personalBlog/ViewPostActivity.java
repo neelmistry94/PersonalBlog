@@ -2,21 +2,25 @@ package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import java.io.File;
+
 public class ViewPostActivity extends Activity {
 
-    ScrollView mainListView;
     Button deleteButton, backButton, voiceView;
     TextView textView, titleView;
     ImageView imageView;
     VideoView videoView;
-    Intent viewPostIntent;
     ViewPost viewPost;
 
     @Override
@@ -27,7 +31,6 @@ public class ViewPostActivity extends Activity {
 
         String voiceURL = "";
 
-        mainListView = (ScrollView) findViewById(R.id.mainListView);
         deleteButton = (Button) findViewById(R.id.deleteButton);
         backButton = (Button) findViewById(R.id.backButton);
 
@@ -54,19 +57,23 @@ public class ViewPostActivity extends Activity {
         }
 
         //This sets the photo of the new post
-        if (viewPost.getPhoto() == null){
+        if (viewPost.getPhotoPath() == null){
             imageView.setVisibility(View.GONE);
         } else {
             imageView.setVisibility(View.VISIBLE);
-            imageView.setImageBitmap(viewPost.getPhoto());
+            File image = new File(viewPost.getPhotoPath());
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
+            imageView.setImageBitmap(bitmap);
         }
 
         //This sets the video of the new post
-        if(viewPost.getVideoUri() == null){
+        if(viewPost.getVideoPath() == null){
             videoView.setVisibility(View.GONE);
         } else {
             videoView.setVisibility(View.VISIBLE);
-            videoView.setVideoURI(viewPost.getVideoUri());
+            videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
+
         }
 
         //This sets the audio of the new post
@@ -93,12 +100,12 @@ public class ViewPostActivity extends Activity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
-                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
-                if(mPlayer.isPlaying()){
-                    mPlayer.pause();
-                } else {
-                    mPlayer.start();
-                }
+//                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
+//                if(mPlayer.isPlaying()){
+//                    mPlayer.pause();
+//                } else {
+//                    mPlayer.start();
+//                }
             }
         });
 

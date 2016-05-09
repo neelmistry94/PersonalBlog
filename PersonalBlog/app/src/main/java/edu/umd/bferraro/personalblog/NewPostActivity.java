@@ -63,9 +63,7 @@ public class NewPostActivity extends Activity {
     private final String TAG = "NewPostActivity";
 
     //These variables are used to create a new ViewPost
-    String titleStr, textStr;
-    Bitmap photo;
-    Uri videoUri;
+    String titleStr, textStr, photoPath, videoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +187,7 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photo, videoUri);
+                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath);
 
                 viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
                 viewPostIntent.putExtra("ViewPost", newViewPost);
@@ -265,7 +263,7 @@ public class NewPostActivity extends Activity {
                 }
 
                 addPicture.setImageBitmap(thumbnail);
-                photo = thumbnail;
+                photoPath = data.getData().getPath();
                 photoLoaded = true;
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
@@ -283,7 +281,7 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
-                    photo = BitmapFactory.decodeFile(imgDecodableString);
+                    photoPath = selectedImage.getPath();
                     photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){
@@ -291,16 +289,16 @@ public class NewPostActivity extends Activity {
                     newPostVideo.setVideoURI(selectedImage);
                     newPostVideo.setAlpha(1);
                     newPostVideo.start();
-                    videoUri = selectedImage;
+                    videoPath = selectedImage.getPath();
                     videoLoaded = true;
                 }
             } else if (requestCode == REQUEST_VIDEO) {
-                Uri videoUriLoc = data.getData();
+                Uri selectedImage = data.getData();
                 newPostVideo = (VideoView)findViewById(R.id.videoView);
-                newPostVideo.setVideoURI(videoUriLoc);
+                newPostVideo.setVideoURI(selectedImage);
                 newPostVideo.setAlpha(1);
                 newPostVideo.start();
-                videoUri = videoUriLoc;
+                videoPath = selectedImage.getPath();
                 videoLoaded = true;
             }
         }
