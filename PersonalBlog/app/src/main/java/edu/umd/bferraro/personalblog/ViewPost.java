@@ -8,13 +8,15 @@ import java.io.Serializable;
 
 public class ViewPost implements Serializable{
 
-    private String title, textPost, photoPath, videoPath;
+    private String title, textPost, photoPath, videoPath, audioPath;
 
-    public ViewPost(String titleParam, String textParam, String photoParam, String videoParam){
+    public ViewPost(String titleParam, String textParam, String photoParam, String videoParam, String
+                    audioParam){
         title = titleParam;
         textPost = textParam;
         photoPath = photoParam;
         videoPath = videoParam;
+        audioPath = audioParam;
     }
 
     public String getTitle(){
@@ -33,6 +35,10 @@ public class ViewPost implements Serializable{
         return videoPath;
     }
 
+    public String getAudioPath(){
+        return audioPath;
+    }
+
     public void setTitle(String titleParam){
         title = titleParam;
     }
@@ -47,6 +53,10 @@ public class ViewPost implements Serializable{
 
     public void setVideoPath(String videoParam){
         videoPath = videoParam;
+    }
+
+    public void setAudioPath(String audioParam){
+        audioPath = audioParam;
     }
 
 }
