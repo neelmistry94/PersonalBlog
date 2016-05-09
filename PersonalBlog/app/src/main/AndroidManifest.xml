@@ -77,7 +77,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".PhotoFullScreenActivity" />
-        <activity android:name=".VideoFullScreenActivity"></activity>
+        <activity android:name=".VideoFullScreenActivity" />
     </application>
 
 </manifest>

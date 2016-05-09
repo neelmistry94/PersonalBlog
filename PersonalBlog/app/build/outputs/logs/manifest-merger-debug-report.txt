@@ -111,7 +111,7 @@ ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalB
 	android:name
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:79:19-58
 activity#edu.umd.bferraro.personalblog.VideoFullScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:80:9-70
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:80:9-61
 	android:name
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:80:19-58
 uses-sdk

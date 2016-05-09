@@ -1,7 +1,6 @@
 package edu.umd.bferraro.personalblog;
 
         import java.io.IOException;
-
         import android.app.Activity;
         import android.content.Context;
         import android.media.AudioManager;
@@ -23,9 +22,8 @@ public class AudioRecord extends Activity {
 
 
     private static final String TAG = "AudioRecord";
-    private static final String mFileName = Environment
-            .getExternalStorageDirectory().getAbsolutePath()
-            + "/audiorecordtest.3gp";
+    private static final String mFileName = R.raw.myfile
+            + "/audiorecord"+  ".3gp";
 
     private MediaRecorder mRecorder;
     private MediaPlayer mPlayer;
@@ -97,7 +95,7 @@ public class AudioRecord extends Activity {
 
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mRecorder.setOutputFile(mFileName);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
@@ -189,6 +187,13 @@ public class AudioRecord extends Activity {
             mPlayer = null;
         }
 
+    }
+
+
+    // GETS AUDIO FILE PATH
+    public String getAudioFile() {
+
+        return mFileName;
     }
 
 }
