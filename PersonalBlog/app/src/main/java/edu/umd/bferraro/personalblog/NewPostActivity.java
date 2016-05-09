@@ -289,7 +289,7 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
-                    photoPath = selectedImage.getPath();
+                    photoPath = getRealPathFromURI(selectedImage);
                     photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){

@@ -1,13 +1,10 @@
 package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,7 +103,6 @@ public class ViewPostActivity extends Activity {
 //                }
             }
         });
-
     }
 
     @Override
