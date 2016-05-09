@@ -1,6 +1,7 @@
 package edu.umd.bferraro.personalblog;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -19,6 +20,7 @@ public class ViewPostActivity extends Activity {
     ImageView imageView;
     VideoView videoView;
     ViewPost viewPost;
+    Intent fullScreenIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,15 @@ public class ViewPostActivity extends Activity {
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
             imageView.setImageBitmap(bitmap);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fullScreenIntent = new Intent(ViewPostActivity.this, photoFullScreenActivity.class);
+                    fullScreenIntent.putExtra("ViewPost", viewPost);
+                    startActivityForResult(fullScreenIntent, 0);
+                }
+            });
         }
 
         //This sets the video of the new post

@@ -60,7 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="picturePosted"
-                android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:adjustViewBounds="true"/>
 
             <VideoView
                 android:id="@+id/videoContent"
@@ -69,7 +70,7 @@
                 android:layout_marginRight="@dimen/activity_vertical_margin"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/imageContent"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"/>
         </RelativeLayout>
 
         <Button
