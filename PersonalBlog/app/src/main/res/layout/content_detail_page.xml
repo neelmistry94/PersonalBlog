@@ -28,35 +28,55 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/backButton"
+        android:id="@+id/scrollView">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:minHeight="300dp"
-            android:layout_below="@+id/backButton">
+            android:layout_height="wrap_content"/>
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/textContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:minHeight="300dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:id="@+id/mediaLayout"
+            android:layout_weight="0.05">
             <ImageView
                 android:id="@+id/imageContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:contentDescription="picturePosted"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+
             <VideoView
                 android:id="@+id/videoContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/voiceMemoContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Play Voice Memo" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/imageContent" />
+        </RelativeLayout>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/voiceMemoContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play Voice Memo" />
+
+    </LinearLayout>
 
 </RelativeLayout>

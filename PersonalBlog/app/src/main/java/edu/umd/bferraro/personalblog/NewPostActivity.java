@@ -270,7 +270,8 @@ public class NewPostActivity extends Activity {
                 }
 
                 addPicture.setImageBitmap(thumbnail);
-                photoPath = data.getData().getPath();
+                photoPath = destination.getPath();
+                System.out.print(photoPath);
                 photoLoaded = true;
             } else if (requestCode == REQUEST_GALLERY) {
                 Uri selectedImage = data.getData();
