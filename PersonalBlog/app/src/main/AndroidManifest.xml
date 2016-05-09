@@ -76,7 +76,8 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".photoFullScreenActivity"></activity>
+        <activity android:name=".PhotoFullScreenActivity" />
+        <activity android:name=".VideoFullScreenActivity"></activity>
     </application>
 
 </manifest>

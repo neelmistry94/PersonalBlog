@@ -82,7 +82,8 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name="edu.umd.bferraro.personalblog.photoFullScreenActivity" />
+        <activity android:name="edu.umd.bferraro.personalblog.PhotoFullScreenActivity" />
+        <activity android:name="edu.umd.bferraro.personalblog.VideoFullScreenActivity" />
     </application>
 
 </manifest>

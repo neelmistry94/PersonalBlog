@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PhotoFullScreenActivity">
+    tools:context="edu.umd.bferraro.personalblog.VideoFullScreenActivity">
 
     <Button
         android:layout_width="wrap_content"
@@ -18,10 +18,10 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="true" />
 
-    <ImageView
+    <VideoView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/imageContent"
+        android:id="@+id/videoContent"
         android:background="#000000" />
 
 </RelativeLayout>
