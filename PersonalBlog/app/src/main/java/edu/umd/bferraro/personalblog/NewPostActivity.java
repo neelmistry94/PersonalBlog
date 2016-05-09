@@ -38,6 +38,7 @@ public class NewPostActivity extends Activity {
     final int REQUEST_PHOTO = 0;
     final int REQUEST_VIDEO = 1;
     final int REQUEST_GALLERY = 2;
+    final int REQUEST_AUDIO = 3;
 
     // Location
     private static final long ONE_MIN = 1000 * 60;
@@ -56,6 +57,7 @@ public class NewPostActivity extends Activity {
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false, image = false;
     Intent viewPostIntent;
+
     private LocationManager mLocationManager;
     private LocationListener mLocationListener;
     private Location mBestReading;
@@ -63,7 +65,7 @@ public class NewPostActivity extends Activity {
     private final String TAG = "NewPostActivity";
 
     //These variables are used to create a new ViewPost
-    String titleStr, textStr, photoPath, videoPath;
+    String titleStr, textStr, photoPath, videoPath, audioPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class NewPostActivity extends Activity {
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
 
-//        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // BEST READING
 //        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
@@ -155,14 +157,9 @@ public class NewPostActivity extends Activity {
         addAudio = (ImageButton) findViewById(R.id.addAudioImageButton);
         addAudio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // TODO - implement addAudio button
-
+                // implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
-
-                startActivity(i);
-
-
-
+                startActivityForResult(i, REQUEST_AUDIO);
             }
         });
         addLocation = (ImageButton) findViewById(R.id.addLocationImageButton);
@@ -189,7 +186,7 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath);
+                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
 
                 viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
                 viewPostIntent.putExtra("ViewPost", newViewPost);
@@ -308,6 +305,11 @@ public class NewPostActivity extends Activity {
                 newPostVideo.start();
                 videoPath = getRealPathFromURI(selectedImage);
                 videoLoaded = true;
+            } else if (requestCode == REQUEST_AUDIO) {
+                // SET AUDIO PATH FILE
+                Uri selectedAudio = data.getData();
+                audioPath = getRealPathFromURI(selectedAudio);
+
             }
         }
     }

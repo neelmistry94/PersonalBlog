@@ -75,10 +75,16 @@ public class ViewPostActivity extends Activity {
         }
 
         //This sets the audio of the new post
-        if (voiceURL.length() == 0){
+        if (viewPost.getAudioPath() == null){
             voiceView.setVisibility(View.GONE);
         } else {
             voiceView.setVisibility(View.VISIBLE);
+                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
+                if(mPlayer.isPlaying()){
+                    mPlayer.pause();
+                } else {
+                    mPlayer.start();
+                }
         }
 
 

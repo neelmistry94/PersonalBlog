@@ -6,5 +6,13 @@
     {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/add_picture.png",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-hdpi/add_picture.png"
+    },
+    {
+        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/ic_launcher.png",
+        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/add_picture.png",
+        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-hdpi/add_picture.png"
     }
 ]
