@@ -7,8 +7,8 @@ import java.io.Serializable;
  */
 
 public class ViewPost implements Serializable{
-    private String title, textPost, videoPath, photoPath;
 
+    private String title, textPost, photoPath, videoPath;
 
     public ViewPost(String titleParam, String textParam, String photoParam, String videoParam){
         title = titleParam;

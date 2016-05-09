@@ -1,6 +1,21 @@
 package edu.umd.bferraro.personalblog;
 
 import android.app.ListActivity;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.database.Cursor;
+import android.widget.SimpleCursorAdapter;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Button;
+import android.widget.EditText;
+import android.util.Log;
+import android.widget.TextView;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,11 +34,31 @@ public class HomePageActivity extends ListActivity {
     TextView noPostsTextView;
     Intent newPostIntent;
     ArrayAdapter<String> adapter;
+    String name;
+    DatabaseManager dbManager;
+    private SimpleCursorAdapter mAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+     //   setSupportActionBar(toolbar);
+
+
+
+         dbManager = new DatabaseManager(this);
+
+//        Cursor c = dbManager.readAllNames();
+//        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
+//                dbManager.columns, new int[] {R.id.id_col, R.id.name_col},
+//                0);
+
+     //   setListAdapter(mAdapter);
+
 
         postListView = getListView();
         newPostButton = (Button) findViewById(R.id.newPostTextView);
@@ -54,6 +89,10 @@ public class HomePageActivity extends ListActivity {
 
             }
         });
+
+
+
+
     }
 
     @Override

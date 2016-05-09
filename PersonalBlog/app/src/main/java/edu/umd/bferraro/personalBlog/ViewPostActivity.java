@@ -8,7 +8,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import java.io.File;
 
 public class ViewPostActivity extends Activity {
 
-    ScrollView mainListView;
     Button deleteButton, backButton, voiceView;
     TextView textView, titleView;
     ImageView imageView;
@@ -33,7 +31,6 @@ public class ViewPostActivity extends Activity {
 
         String voiceURL = "";
 
-        mainListView = (ScrollView) findViewById(R.id.mainListView);
         deleteButton = (Button) findViewById(R.id.deleteButton);
         backButton = (Button) findViewById(R.id.backButton);
 
@@ -63,12 +60,10 @@ public class ViewPostActivity extends Activity {
         if (viewPost.getPhotoPath() == null){
             imageView.setVisibility(View.GONE);
         } else {
-            File sd = Environment.getExternalStorageDirectory();
-            File image = new File(sd+viewPost.getPhotoPath());
+            File image = new File(viewPost.getPhotoPath());
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(), bmOptions);
+            Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
             imageView.setImageBitmap(bitmap);
-            imageView.setVisibility(View.VISIBLE);
         }
 
         //This sets the video of the new post
@@ -77,7 +72,6 @@ public class ViewPostActivity extends Activity {
         } else {
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
-            videoView.start();
         }
 
         //This sets the audio of the new post
