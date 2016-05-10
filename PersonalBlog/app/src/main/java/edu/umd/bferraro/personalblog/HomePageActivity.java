@@ -48,8 +48,7 @@ public class HomePageActivity extends ListActivity {
      //   setSupportActionBar(toolbar);
 
 
-         dbManager = new DatabaseManager(this);
-
+        dbManager = new DatabaseManager(this);
 
 
         postListView = getListView();
@@ -83,9 +82,7 @@ public class HomePageActivity extends ListActivity {
             }
         });
 
-
-
-
+        populateTable();
     }
 
     @Override
@@ -110,23 +107,29 @@ public class HomePageActivity extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void populateTable(){
+        ViewPost temp;
+        ArrayList<String> listItems = new ArrayList<String>();
+
+        for(int i=1; i<=dbManager.getDBCount(); i++){
+            temp = dbManager.getViewPost(i);
+            listItems.add(temp.getTitle());
+        }
+
+        //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                listItems);
+        setListAdapter(adapter);
+        noPostsTextView.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == 0) {
-            ViewPost temp = dbManager.getViewPost(2);
-
-
-            ArrayList<String> listItems = new ArrayList<String>();
-            listItems.add("Post 1");
-
-            //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
-            adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1,
-                    listItems);
-            setListAdapter(adapter);
-            noPostsTextView.setVisibility(View.GONE);
+            populateTable();
         } else if (resultCode == 2){
             adapter.clear();
         }
@@ -138,7 +141,9 @@ public class HomePageActivity extends ListActivity {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
 
-        ViewPost newViewPost = new ViewPost("Post 1", "Here is some text for my first post", null, null, null, null);
+        String title = (String) getListAdapter().getItem(position);
+
+        ViewPost newViewPost = dbManager.getViewPost(Integer.parseInt(title.substring(0,1)));
 
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);

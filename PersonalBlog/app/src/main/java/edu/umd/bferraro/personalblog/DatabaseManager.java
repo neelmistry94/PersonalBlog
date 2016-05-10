@@ -107,7 +107,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Log.e("DB", "getString(4) AFTER: " + c.getString(4));
 
 
-        tmp = new ViewPost(c.getString(1),c.getString(2), c.getString(3), c.getString(4), null, null);
+        tmp = new ViewPost(c.getString(0) + " - "+c.getString(1),c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6));
 
 
         return tmp;
@@ -119,147 +119,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-
     public void deleteDB() {
         mContext.deleteDatabase(DATABASE_NAME);
     }
 
+    public Cursor readAllNames() {
+        return getWritableDatabase().query(TABLE_POSTS,
+                postsColumn, null, new String[]{}, null, null,
+                null);
+    }
 
+    // Get Count
+    public int getDBCount() {
+        Cursor c = readAllNames();
+        return c.getCount();
+    }
 
-
-
-
-
-//
-//    // Adding new post
-//    public void addPost(String titleParam, String textParam, String photoPathParam, String videoPathParam){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//
-//        values.put(KEY_TITLE, titleParam);
-//        values.put(TEXT, textParam);
-//        values.put(PHOTO_PATH, photoPathParam);
-//        values.put(VIDEO_PATH, videoPathParam);
-//
-//        db.insert(TABLE_POSTS, null, values);
-//        db.close();
-//    }
-//
-//
-//    // Adding new contact
-//    public void addName(String name) {
-//        Log.e("Personal Blog", "Adding a name to DB: " + name);
-//        SQLiteDatabase db = this.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(KEY_NAME, name);
-//
-//        // Inserting Row
-//        db.insert(TABLE_NAMES, null, values);
-//
-//        //  values.clear();
-//        db.close(); // Closing database connection
-//    }
-//
-//    // Getting single
-//    public String getName(int id) {
-//        Log.e("Personal Blog", "Getting name");
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(TABLE_NAMES, new String[]{KEY_ID,
-//                        KEY_NAME}, KEY_ID + "=?",
-//                new String[]{String.valueOf(id)}, null, null, null, null);
-//
-//
-//        Log.i("Personal blog", "Cursor Pos: " + Integer.toString(cursor.getPosition()));
-//
-//        if (cursor != null) {
-//            cursor.moveToFirst(); // Picks which row
-//        }
-//
-//        Log.i("Personal blog", "Cursor AFTER Pos: " + Integer.toString(cursor.getPosition()));
-//
-//        String name = cursor.getString(1); // Get String grabs a column
-//
-//           db.close();
-//        // return name
-//        return name;
-//
-//    }
-//
-//    public ViewPost getViewPost(int id){
-//        ViewPost viewPost;
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(TABLE_POSTS, new String[]{KEY_ID, KEY_TITLE, TEXT, PHOTO_PATH, VIDEO_PATH}, KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
-//
-//        Log.i("Personal blog", "Cursor Pos: " + Integer.toString(cursor.getPosition()));
-//
-//        if(cursor != null) {
-//         //   cursor.moveToFirst();
-//        }
-//
-//        Log.i("Personal blog", "Cursor AFTER Pos: " + Integer.toString(cursor.getPosition()));
-//
-//        viewPost = new ViewPost(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4), null);
-//
-//        return viewPost;
-//    }
-//
-//    // Delete all records
-//    public void clearAll() {
-//        getWritableDatabase().delete(TABLE_NAMES, null, null);
-//    }
-//
-//    public Cursor readAllNames() {
-//        return getWritableDatabase().query(TABLE_NAMES,
-//                columns, null, new String[]{}, null, null,
-//                null);
-//    }
-//
-//    // Get Count
-//    public int getDBCount() {
-//        Log.e("Personal blog", "Getting Count of DB");
-//
-//        Cursor c = readAllNames();
-//        return c.getCount();
-//    }
-//
-//    // Updating single
-//    public void update(String oldVersion, String newVersion) {
-//        Log.e("Personal Blog", "Updating " + oldVersion + "to" + newVersion);
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(KEY_NAME, newVersion);
-//
-//        db.update(TABLE_NAMES, values,
-//                KEY_NAME + "=?",
-//                new String[]{oldVersion});
-//
-//        db.close();
-//    }
-//
-//    // Deleting single
-//    public void deleteContact(String beGone) {
-//        Log.e("Personal Blog", "Deleting" + beGone);
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        db.delete(TABLE_NAMES,
-//                KEY_NAME + "=?",
-//                new String[]{beGone});
-//        db.close();
-//
-//    }
-//
-//
-//    public void deleteDatabase() {
-//        mContext.deleteDatabase(DATABASE_NAME);
-//    }
-//
 //    public SQLiteDatabase getDB() {
 //        SQLiteDatabase db = this.getReadableDatabase();
 //        return db;
