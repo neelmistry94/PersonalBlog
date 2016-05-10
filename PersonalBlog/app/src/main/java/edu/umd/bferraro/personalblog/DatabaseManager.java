@@ -51,7 +51,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
 //        String CREATE_NAMES_TABLE = "CREATE TABLE " + TABLE_NAMES + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
 
-        String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT," + TEXT + " TEXT," + PHOTO_PATH + " TEXT," + VIDEO_PATH + " TEXT" + ")";
+        String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + " (" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_TITLE + " TEXT, " + TEXT + " TEXT, " + PHOTO_PATH + " TEXT, " + VIDEO_PATH + " TEXT" + ")";
         System.out.println(CREATE_POSTS_TABLE);
 
 //        db.execSQL(CREATE_NAMES_TABLE);
@@ -132,6 +132,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_POSTS, new String[]{KEY_ID, KEY_TITLE, TEXT, PHOTO_PATH, VIDEO_PATH}, KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
 
         viewPost = new ViewPost(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4), null);
 
