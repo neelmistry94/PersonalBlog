@@ -136,12 +136,6 @@ public class ViewPostActivity extends Activity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
-//                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
-//                if(mPlayer.isPlaying()){
-//                    mPlayer.pause();
-//                } else {
-//                    mPlayer.start();
-//                }
             }
         });
     }

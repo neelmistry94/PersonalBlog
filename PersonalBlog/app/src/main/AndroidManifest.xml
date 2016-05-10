@@ -16,7 +16,7 @@ package="edu.umd.bferraro.personalblog">
 
 
 
-    <activity android:name=".LockScreenActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <activity android:name=".LockScreenActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +32,7 @@ package="edu.umd.bferraro.personalblog">
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
     </activity>
-    <activity android:name=".ViewPostActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <activity android:name=".ViewPostActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
 
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -41,7 +41,7 @@ package="edu.umd.bferraro.personalblog">
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
     </activity>
-    <activity android:name=".HomePageActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <activity android:name=".HomePageActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
 
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -50,13 +50,13 @@ package="edu.umd.bferraro.personalblog">
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
     </activity>
-    <activity android:name=".AudioRecord" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <activity android:name=".AudioRecord" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
 
 
         <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
     </activity>
-    <activity android:name=".DriveBackupActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <activity android:name=".DriveBackupActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
 
