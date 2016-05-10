@@ -9,6 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.umd.bferraro.personalblog.VideoFullScreenActivity">
 
+    <VideoView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/videoContent"
+        android:background="#000000" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,11 +24,5 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="true"
         android:textColor="#ffffff" />
-
-    <VideoView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/videoContent"
-        android:background="#000000" />
 
 </RelativeLayout>
