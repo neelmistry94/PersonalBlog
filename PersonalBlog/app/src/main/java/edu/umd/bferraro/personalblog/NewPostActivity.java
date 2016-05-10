@@ -185,12 +185,12 @@ public class NewPostActivity extends Activity {
         addAudio = (ImageButton) findViewById(R.id.addAudioImageButton);
         addAudio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // implement addAudio button
+                // TODO - implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
                 startActivityForResult(i, REQUEST_AUDIO);
-//                Log.i(TAG, audioPath);
             }
         });
+
         addLocation = (ImageButton) findViewById(R.id.addLocationImageButton);
         addLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -220,7 +220,7 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
-                Log.i(TAG, "Audio Path " + audioPath);
+                Log.i(TAG, "Audio Path Post button: " + audioPath);
                 ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath,
                         locationString);
 
@@ -437,9 +437,11 @@ public class NewPostActivity extends Activity {
                 videoLoaded = true;
             } else if (requestCode == REQUEST_AUDIO) {
                 // SET AUDIO PATH FILE
-                Uri selectedAudio = data.getData();
-                audioPath = getRealPathFromURI(selectedAudio);
-                Log.e(TAG, "AUDIOPATH: " + audioPath);
+              //  Uri selectedAudio = data.getData();
+//                audioPath = getRealPathFromURI(selectedAudio);
+
+                audioPath = data.getStringExtra("audioFile");
+                Log.e(TAG, "AUDIOPATH1: " + audioPath);
 
             }
         }

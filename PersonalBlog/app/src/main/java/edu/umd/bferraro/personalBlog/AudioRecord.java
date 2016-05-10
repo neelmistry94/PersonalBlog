@@ -3,6 +3,7 @@ package edu.umd.bferraro.personalblog;
         import java.io.IOException;
         import android.app.Activity;
         import android.content.Context;
+        import android.content.Intent;
         import android.media.AudioManager;
         import android.media.AudioManager.OnAudioFocusChangeListener;
         import android.media.MediaPlayer;
@@ -87,7 +88,6 @@ public class AudioRecord extends Activity {
         } else {
             stopRecording();
         }
-
     }
 
     // Start recording with MediaRecorder
@@ -98,7 +98,7 @@ public class AudioRecord extends Activity {
         mRecorder.setOutputFile(mFileName);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
-        Log.e(TAG, mFileName);
+     //   Log.e(TAG, mFileName);
 
         try {
             mRecorder.prepare();
@@ -118,6 +118,9 @@ public class AudioRecord extends Activity {
             mRecorder = null;
         }
 
+        Intent i = new Intent();
+        i.putExtra("audioFile", getAudioFile());
+        setResult(RESULT_OK, i);
     }
 
     // Toggle playback
