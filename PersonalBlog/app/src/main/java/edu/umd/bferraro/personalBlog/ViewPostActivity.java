@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +24,7 @@ public class ViewPostActivity extends Activity {
     VideoView videoView;
     ViewPost viewPost;
     Intent fullScreenIntent;
+    DatabaseManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ViewPostActivity extends Activity {
         setContentView(R.layout.content_detail_page);
         viewPost = (ViewPost)this.getIntent().getSerializableExtra("ViewPost");
 
-        String voiceURL = "";
+        dbManager = new DatabaseManager(this);
 
         deleteButton = (Button) findViewById(R.id.deleteButton);
         backButton = (Button) findViewById(R.id.backButton);
@@ -119,6 +119,10 @@ public class ViewPostActivity extends Activity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
+
+                String id = viewPost.getTitle().substring(0, 1);
+                dbManager.deleteViewPost(id);
+
                 textView = null;
                 titleView = null;
                 imageView = null;

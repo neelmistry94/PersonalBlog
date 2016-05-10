@@ -113,6 +113,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return tmp;
     }
 
+    public void deleteViewPost(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_POSTS, "_id = ? ", new String[]{id});
+    }
+
     // Delete all records
     public void clearAll() {
         getWritableDatabase().delete(TABLE_POSTS, null, null);
@@ -135,9 +140,5 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return c.getCount();
     }
 
-//    public SQLiteDatabase getDB() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        return db;
-//    }
 
 }
