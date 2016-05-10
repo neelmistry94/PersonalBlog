@@ -51,7 +51,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_TITLE + " TEXT," + TEXT + " TEXT," + PHOTO_PATH + " TEXT," + VIDEO_PATH + " TEXT,"
                 + AUDIO_PATH + " TEXT," + LOCATION_STRING + " TEXT" + ")";
-        System.out.println(CREATE_POSTS_TABLE);
 
         db.execSQL(CREATE_POSTS_TABLE);
     }
@@ -110,7 +109,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         tmp = new ViewPost(c.getString(1),c.getString(2), c.getString(3), c.getString(4), null);
 
+
         return tmp;
+    }
+
+    // Delete all records
+    public void clearAll() {
+        getWritableDatabase().delete(TABLE_POSTS, null, null);
+
     }
 
 

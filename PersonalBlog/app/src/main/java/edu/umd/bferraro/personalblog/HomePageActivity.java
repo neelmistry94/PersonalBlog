@@ -46,15 +46,6 @@ public class HomePageActivity extends ListActivity {
         setContentView(R.layout.activity_home_page);
 
         dbManager = new DatabaseManager(this);
-       // dbManager.deleteDB();
-
-//        Cursor c = dbManager.readAllNames();
-//        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
-//                dbManager.columns, new int[] {R.id.id_col, R.id.name_col},
-//                0);
-
-     //   setListAdapter(mAdapter);
-
 
         postListView = getListView();
         newPostButton = (Button) findViewById(R.id.newPostTextView);
@@ -118,12 +109,8 @@ public class HomePageActivity extends ListActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == 0) {
-
             ViewPost temp = dbManager.getViewPost(2);
-//            Log.d("title", temp.getTitle());
-//            Log.d("text", temp.getTextPost());
-//            Log.d("photoPath", temp.getPhotoPath());
-//            Log.d("videoPath", temp.getVideoPath());
+
 
             ArrayList<String> listItems = new ArrayList<String>();
             listItems.add("Post 1");
