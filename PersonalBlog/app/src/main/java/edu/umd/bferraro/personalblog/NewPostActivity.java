@@ -65,14 +65,12 @@ public class NewPostActivity extends Activity {
     private final String TAG = "NewPostActivity";
 
     //These variables are used to create a new ViewPost
-    String titleStr, textStr, photoPath, videoPath, audioPath;
+    String titleStr, textStr, photoPath, videoPath, audioPath, locationString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
-
-
 
 
         title = (EditText) findViewById(R.id.titleEditText);
@@ -196,15 +194,17 @@ public class NewPostActivity extends Activity {
         addLocation = (ImageButton) findViewById(R.id.addLocationImageButton);
         addLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // TODO - implement addLocation button
+                // implement addLocation button
                 // BEST READING
                 mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
                 if (null != mBestReading) {
                     updateDisplay(mBestReading);
+                    locationString = mBestReading.toString();
                 } else {
                     Log.e(TAG, "No Initial Reading Available");
                 }
+
 
             }
         });
@@ -223,7 +223,8 @@ public class NewPostActivity extends Activity {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
                 Log.i(TAG, "Audio Path " + audioPath);
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
+                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath,
+                        locationString);
 
                 viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
                 viewPostIntent.putExtra("ViewPost", newViewPost);
