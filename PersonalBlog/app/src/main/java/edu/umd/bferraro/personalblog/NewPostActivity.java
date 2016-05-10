@@ -184,6 +184,10 @@ public class NewPostActivity extends Activity {
                 // implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
                 startActivityForResult(i, REQUEST_AUDIO);
+
+                addAudio.setImageResource(R.mipmap.ic_launcher);
+                addAudio.setBackgroundColor(getResources().getColor(R.color.white));
+
             }
         });
 

@@ -1,153 +1,153 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:1:39-78:12
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:1:39-78:12
 	package
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:2:1-40
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:2:1-40
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:1:49-107
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:1:49-107
 	android:versionCode
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:5:1-77
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:5:1-77
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:5:18-74
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:5:18-74
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:6:1-67
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:6:1-67
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:6:18-64
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:6:18-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:7:1-75
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:7:1-75
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:7:18-72
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:7:18-72
 uses-permission#android.permission.INTERNET
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:8:1-63
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:8:1-63
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:8:18-60
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:8:18-60
 application
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:1-76:15
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:11:1-76:15
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-drive:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:76-108
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:11:76-108
 	android:supportsRtl
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:12:5-31
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:12:5-31
 	android:allowBackup
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:14-40
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:11:14-40
 	android:icon
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:41-75
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:11:41-75
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:12:32-63
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:12:32-63
 uses-permission#android.permission.CAMERA
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:14:5-65
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:14:5-65
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:14:22-62
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:14:22-62
 uses-feature#android.hardware.camera
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:15:5-60
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:15:5-60
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:15:19-57
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:15:19-57
 activity#edu.umd.bferraro.personalblog.LockScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:19:5-25:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:19:5-25:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:19:50-82
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:19:50-82
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:19:83-130
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:19:83-130
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:19:15-49
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:19:15-49
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:20:9-24:25
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:20:9-24:25
 action#android.intent.action.MAIN
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:21:13-65
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:21:13-65
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:21:21-62
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:21:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:23:13-73
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:23:13-73
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:23:23-70
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:23:23-70
 activity#edu.umd.bferraro.personalblog.NewPostActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:26:5-34:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:26:5-34:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:26:47-79
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:26:47-79
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:26:80-127
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:26:80-127
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:26:15-46
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:26:15-46
 activity#edu.umd.bferraro.personalblog.ViewPostActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:35:5-43:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:35:5-43:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:35:48-80
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:35:48-80
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:35:81-128
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:35:81-128
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:35:15-47
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:35:15-47
 activity#edu.umd.bferraro.personalblog.HomePageActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:44:5-52:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:44:5-52:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:44:48-80
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:44:48-80
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:44:81-128
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:44:81-128
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:44:15-47
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:44:15-47
 activity#edu.umd.bferraro.personalblog.AudioRecord
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:53:5-58:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:53:5-58:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:53:43-75
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:53:43-75
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:53:76-123
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:53:76-123
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:53:15-42
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:53:15-42
 activity#edu.umd.bferraro.personalblog.DriveBackupActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:5-65:16
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:59:5-65:16
 	android:label
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:51-83
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:59:51-83
 	android:theme
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:84-131
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:59:84-131
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:15-50
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:59:15-50
 activity#edu.umd.bferraro.personalblog.PhotoFullScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:74:5-57
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:74:5-57
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:74:15-54
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:74:15-54
 activity#edu.umd.bferraro.personalblog.VideoFullScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:75:5-57
+ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:75:5-57
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:75:15-54
+		ADDED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml:75:15-54
 uses-sdk
-INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-drive:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-drive:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.1.1] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/AndroidManifest.xml
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:23:13-66
+		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:23:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:22:13-58
+		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:22:13-58

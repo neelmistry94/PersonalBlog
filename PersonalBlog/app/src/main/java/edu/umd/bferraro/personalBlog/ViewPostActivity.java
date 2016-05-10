@@ -19,7 +19,7 @@ import java.io.File;
 public class ViewPostActivity extends Activity {
 
     Button deleteButton, backButton, voiceView;
-    TextView textView, titleView;
+    TextView textView, titleView, locView;
     ImageView imageView;
     VideoView videoView;
     ViewPost viewPost;
@@ -39,6 +39,7 @@ public class ViewPostActivity extends Activity {
 
         titleView = (TextView)findViewById(R.id.postTitleView);
         textView = (TextView)findViewById(R.id.textContent);
+        locView = (TextView)findViewById(R.id.locationView);
         imageView = (ImageView)findViewById(R.id.imageContent);
         videoView = (VideoView)findViewById(R.id.videoContent);
         voiceView = (Button)findViewById(R.id.voiceMemoContent);
@@ -57,6 +58,13 @@ public class ViewPostActivity extends Activity {
         } else {
             textView.setVisibility(View.VISIBLE);
             textView.setText(viewPost.getTextPost());
+        }
+
+        if (viewPost.getLocationString() == null) {
+            locView.setVisibility(View.GONE);
+        } else {
+            locView.setVisibility(View.VISIBLE);
+            locView.setText(viewPost.getLocationString());
         }
 
         //This sets the photo of the new post
