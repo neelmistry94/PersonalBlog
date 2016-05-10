@@ -47,7 +47,7 @@ public class NewPostActivity extends Activity {
     private static final long MEASURE_TIME = 1000 * 30;
     private static final long POLLING_FREQ = 1000 * 10;
     private static final float MIN_ACCURACY = 1.0f;
-    private static final float MIN_LAST_READ_ACCURACY = 500.0f;
+    private static final float MIN_LAST_READ_ACCURACY = 1.0f;
     private static final float MIN_DISTANCE = 10.0f;
 
 
@@ -80,17 +80,23 @@ public class NewPostActivity extends Activity {
 
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        // BEST READING
-        //mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
         mLocationListener = new LocationListener() {
             // Called back when location changes
             public void onLocationChanged(Location location) {
+                if (null == mBestReading
+                        || location.getAccuracy() < mBestReading.getAccuracy()) {
 
-                Log.e(TAG, "onLocationChange");
-                mBestReading = location;
+                    // Update best estimate
+                    mBestReading = location;
 
+                    // Update display
+                    updateDisplay(location);
 
+                    if (mBestReading.getAccuracy() < MIN_ACCURACY)
+                        mLocationManager.removeUpdates(mLocationListener);
+
+                }
             }
 
             public void onStatusChanged(String provider, int status,
@@ -106,8 +112,6 @@ public class NewPostActivity extends Activity {
                 // NA
             }
         };
-
-
 
 
         //The following methods will handle the creation of posts using photo or video
@@ -186,17 +190,21 @@ public class NewPostActivity extends Activity {
                 // implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
                 startActivityForResult(i, REQUEST_AUDIO);
-                Log.i(TAG, audioPath);
+//                Log.i(TAG, audioPath);
             }
         });
         addLocation = (ImageButton) findViewById(R.id.addLocationImageButton);
         addLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // TODO - implement addLocation button
+                // BEST READING
+                mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
-                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mLocationListener);
-
-               // Log.e(TAG, Double.toString(mBestReading.getLongitude()));
+                if (null != mBestReading) {
+                    updateDisplay(mBestReading);
+                } else {
+                    Log.e(TAG, "No Initial Reading Available");
+                }
 
             }
         });
@@ -228,6 +236,99 @@ public class NewPostActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (null == mBestReading
+                || mBestReading.getAccuracy() > MIN_LAST_READ_ACCURACY
+                || mBestReading.getTime() < System.currentTimeMillis()
+                - TWO_MIN) {
+
+            // Register for network location updates
+            if (null != mLocationManager
+                    .getProvider(LocationManager.NETWORK_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER, POLLING_FREQ,
+                        MIN_DISTANCE, mLocationListener);
+                Log.i(TAG, "NETWORK PROVIDER REQUEST");
+            }
+
+            // Register for GPS location updates
+            if (null != mLocationManager
+                    .getProvider(LocationManager.GPS_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER, POLLING_FREQ,
+                        MIN_DISTANCE, mLocationListener);
+                Log.i(TAG, "GPS PROVIDER REQUEST");
+            }
+
+            // Schedule a runnable to unregister location listeners
+            Executors.newScheduledThreadPool(1).schedule(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    Log.i(TAG, "location updates cancelled");
+
+                    mLocationManager.removeUpdates(mLocationListener);
+
+                }
+            }, MEASURE_TIME, TimeUnit.MILLISECONDS);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mLocationManager.removeUpdates(mLocationListener);
+    }
+
+    private Location bestLastKnownLocation(float minAccuracy, long maxAge) {
+
+        Location bestResult = null;
+        float bestAccuracy = Float.MAX_VALUE;
+        long bestAge = Long.MIN_VALUE;
+
+        List<String> matchingProviders = mLocationManager.getAllProviders();
+
+        for (String provider : matchingProviders) {
+
+            Location location = mLocationManager.getLastKnownLocation(provider);
+
+            Log.e(TAG, "Provider: " + provider);
+
+            if (location != null) {
+
+//                Log.e(TAG, "Location: " + location.toString());
+
+                float accuracy = location.getAccuracy();
+                long time = location.getTime();
+
+                if (accuracy < bestAccuracy) {
+
+                    bestResult = location;
+                    bestAccuracy = accuracy;
+                    bestAge = time;
+
+                }
+            }
+        }
+
+
+            return bestResult;
+
+    }
+
+    private void updateDisplay(Location location) {
+
+        Log.e(TAG, "Accuracy:" + location.getAccuracy());
+
+        Log.e(TAG, "Longitude:" + location.getLongitude());
+
+        Log.e(TAG, "Latitude:" + location.getLatitude());
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

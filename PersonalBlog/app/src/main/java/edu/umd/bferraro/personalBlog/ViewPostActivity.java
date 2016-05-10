@@ -78,7 +78,7 @@ public class ViewPostActivity extends Activity {
         //This sets the audio of the new post
         if (viewPost.getAudioPath() == null){
             voiceView.setVisibility(View.GONE);
-            Log.d("ViewPostAct", viewPost.getAudioPath());
+//            Log.d("ViewPostAct", viewPost.getAudioPath());
         } else {
             voiceView.setVisibility(View.VISIBLE);
                 Uri audioUri = Uri.parse(viewPost.getAudioPath());
