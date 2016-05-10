@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
 public class NewPostActivity extends Activity {
     final int REQUEST_PHOTO = 0;
     final int REQUEST_VIDEO = 1;
