@@ -16,12 +16,12 @@
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/color/abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/color/abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/color/abc_primary_text_disable_only_material_dark.xml"
     },
     {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",

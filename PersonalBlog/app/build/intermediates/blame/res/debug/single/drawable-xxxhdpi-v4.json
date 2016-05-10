@@ -4,12 +4,12 @@
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png",
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",

@@ -12,12 +12,12 @@
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png",
-        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png",
@@ -100,12 +100,12 @@
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-mdpi/common_plus_signin_btn_text_light_disabled.9.png"
     },
     {
-        "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_015.png",
-        "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_btn_check_to_on_mtrl_015.png"
-    },
-    {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png",
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-mdpi/common_plus_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_015.png",
+        "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable-mdpi/abc_btn_check_to_on_mtrl_015.png"
     },
     {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_popup_background_mtrl_mult.9.png",

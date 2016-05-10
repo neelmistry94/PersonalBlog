@@ -20,12 +20,12 @@
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/anim/design_fab_in.xml"
+    },
+    {
+        "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/anim/abc_slide_in_bottom.xml"
     },
     {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
