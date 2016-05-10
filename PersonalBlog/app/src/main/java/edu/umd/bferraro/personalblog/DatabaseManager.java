@@ -139,6 +139,4 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor c = readAllNames();
         return c.getCount();
     }
-
-
 }
