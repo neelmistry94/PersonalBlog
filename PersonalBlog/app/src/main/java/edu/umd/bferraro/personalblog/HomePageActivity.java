@@ -69,7 +69,7 @@ public class HomePageActivity extends ListActivity {
 
             public void onClick(View view) {
                 backupIntent = new Intent(HomePageActivity.this, DriveBackupActivity.class);
-                startActivityForResult(backupIntent, 0);
+                startActivityForResult(backupIntent, 1);
 
 
             }
@@ -127,7 +127,9 @@ public class HomePageActivity extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if(requestCode == 1){
+            return;
+        }
         if(resultCode == 0) {
             populateTable();
         } else if (resultCode == 2){

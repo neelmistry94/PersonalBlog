@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/add_picture.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/add_picture.png"
-    },
-    {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/add_video.png",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/add_video.png"
     },
@@ -26,25 +22,5 @@
     {
         "merged": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/numbutton.png",
         "source": "/Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/numbutton.png"
-    },
-    {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/add_audio.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/add_audio.png"
-    },
-    {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/numbutton.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/numbutton.png"
-    },
-    {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/add_video.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/add_video.png"
-    },
-    {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/add_location.png",
-        "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxxhdpi/add_location.png"
     }
 ]
