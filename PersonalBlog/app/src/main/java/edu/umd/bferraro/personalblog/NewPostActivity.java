@@ -204,8 +204,6 @@ public class NewPostActivity extends Activity {
                 } else {
                     Log.e(TAG, "No Initial Reading Available");
                 }
-
-
             }
         });
 
@@ -310,7 +308,7 @@ public class NewPostActivity extends Activity {
 
                     bestResult = location;
                     bestAccuracy = accuracy;
-                    bestAge = time;
+                   // bestAge = time;
 
                 }
             }
