@@ -2,7 +2,9 @@ package edu.umd.bferraro.personalblog;
 
         import java.io.IOException;
         import android.app.Activity;
+        import android.app.AlertDialog;
         import android.content.Context;
+        import android.content.DialogInterface;
         import android.content.Intent;
         import android.media.AudioManager;
         import android.media.AudioManager.OnAudioFocusChangeListener;
@@ -160,6 +162,26 @@ public class AudioRecord extends Activity {
             mPlayer.release();
             mPlayer = null;
         }
+
+        Log.e(TAG, "Stop playing?");
+
+        AlertDialog alertDialog = new AlertDialog.Builder(AudioRecord.this).create();
+        alertDialog.setTitle("Are you okay with this audio?");
+
+        alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        alertDialog.setButton2("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDialog.show();
+
     }
 
     // Listen for Audio Focus changes
