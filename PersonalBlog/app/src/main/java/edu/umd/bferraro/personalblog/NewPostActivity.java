@@ -181,7 +181,7 @@ public class NewPostActivity extends Activity {
 //                viewPostIntent.putExtra("ViewPost", newViewPost);
 //
 //                startActivityForResult(viewPostIntent, 0);
-                dbManager.addPost(titleStr, textStr, photoPath, videoPath);
+                dbManager.addViewPost(titleStr, textStr, photoPath, videoPath, null, null);
 
                 Toast.makeText(NewPostActivity.this, "Post Successful", Toast.LENGTH_LONG).show();
                 finish();
