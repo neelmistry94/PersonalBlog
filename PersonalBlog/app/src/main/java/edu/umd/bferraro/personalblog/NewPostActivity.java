@@ -15,7 +15,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import android.location.*;
 import java.io.ByteArrayOutputStream;
@@ -70,8 +72,23 @@ public class NewPostActivity extends Activity {
         dbManager = new DatabaseManager(this);
 
         title = (EditText) findViewById(R.id.titleEditText);
+//        title.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imn.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+//                return  true;
+//            }
+//        });
         postText = (EditText) findViewById(R.id.textEditText);
-
+//        postText.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imn.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+//                return  true;
+//            }
+//        });
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -201,6 +218,7 @@ public class NewPostActivity extends Activity {
                 if (null != mBestReading) {
                     updateDisplay(mBestReading);
                     locationString = mBestReading.toString();
+                    addLocation.setImageResource(R.mipmap.pinpoint);
                 } else {
                     Log.e(TAG, "No Initial Reading Available");
                 }

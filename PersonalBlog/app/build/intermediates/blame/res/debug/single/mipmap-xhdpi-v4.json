@@ -8,6 +8,10 @@
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xhdpi/numbutton.png"
     },
     {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/pinpoint.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xhdpi/pinpoint.png"
+    },
+    {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },

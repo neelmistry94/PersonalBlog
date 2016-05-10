@@ -128,7 +128,12 @@ public class HomePageActivity extends ListActivity {
             }
         };
         setListAdapter(adapter);
-        noPostsTextView.setVisibility(View.GONE);
+        if(dbManager.getDBCount() == 0) {
+            noPostsTextView.setVisibility(View.VISIBLE);
+        }
+        else{
+            noPostsTextView.setVisibility(View.GONE);
+        }
     }
 
     @Override

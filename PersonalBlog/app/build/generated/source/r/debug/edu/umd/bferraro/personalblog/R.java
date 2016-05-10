@@ -2418,8 +2418,8 @@ containing a value of this type.
         public static final int line3=0x7f0d00ae;
         public static final int listMode=0x7f0d000b;
         public static final int list_item=0x7f0d0049;
-        public static final int locationView=0x7f0d0087;
-        public static final int mediaLayout=0x7f0d0088;
+        public static final int locationView=0x7f0d0089;
+        public static final int mediaLayout=0x7f0d0087;
         public static final int media_actions=0x7f0d00a8;
         public static final int middle=0x7f0d0031;
         public static final int mini=0x7f0d002f;
@@ -2501,7 +2501,7 @@ containing a value of this type.
         public static final int videoContent=0x7f0d0081;
         public static final int videoView=0x7f0d007d;
         public static final int view_offset_helper=0x7f0d000a;
-        public static final int voiceMemoContent=0x7f0d0089;
+        public static final int voiceMemoContent=0x7f0d0088;
         public static final int wide=0x7f0d003b;
         public static final int withText=0x7f0d0038;
         public static final int wrap_content=0x7f0d0041;
@@ -2586,6 +2586,7 @@ containing a value of this type.
         public static final int diarylauncher=0x7f030004;
         public static final int ic_launcher=0x7f030005;
         public static final int numbutton=0x7f030006;
+        public static final int pinpoint=0x7f030007;
     }
     public static final class raw {
         public static final int myfile=0x7f060000;

@@ -12,6 +12,10 @@
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-hdpi/add_picture.png"
     },
     {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/pinpoint.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-hdpi/pinpoint.png"
+    },
+    {
         "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/diarylauncher.png",
         "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-hdpi/diarylauncher.png"
     }

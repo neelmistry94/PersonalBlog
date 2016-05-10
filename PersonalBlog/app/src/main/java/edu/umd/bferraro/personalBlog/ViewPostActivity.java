@@ -137,6 +137,7 @@ public class ViewPostActivity extends Activity {
                 titleView = null;
                 imageView = null;
                 videoView = null;
+                locView = null;
                 viewPost = null;
                 Toast.makeText(ViewPostActivity.this, "Post Deleted", Toast.LENGTH_LONG).show();
             }
