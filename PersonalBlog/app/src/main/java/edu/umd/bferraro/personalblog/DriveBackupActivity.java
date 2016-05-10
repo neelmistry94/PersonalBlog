@@ -31,16 +31,20 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.Drive;
+import com.google.android.gms.drive.DriveApi;
 import com.google.android.gms.drive.DriveApi.DriveContentsResult;
 import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveId;
 import com.google.android.gms.drive.MetadataChangeSet;
+import com.google.android.gms.drive.query.Filters;
+import com.google.android.gms.drive.query.Query;
+import com.google.android.gms.drive.query.SearchableField;
 
 
 public class DriveBackupActivity extends Activity implements ConnectionCallbacks,
         OnConnectionFailedListener {
 
-    private static final String TAG = "drive-quickstart";
+    private static final String TAG = "drive backup";
     private static final int REQUEST_CODE_CAPTURE_IMAGE = 1;
     private static final int REQUEST_CODE_CREATOR = 2;
     private static final int REQUEST_CODE_RESOLUTION = 3;
@@ -97,14 +101,9 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
                         MetadataChangeSet metadataChangeSet = new MetadataChangeSet.Builder()
                                 .setMimeType("text/db").setTitle("database.db").build();
 
-//                        DriveId fileId = DriveId.decodeFromString("database");
-//                        DriveFile driveFile = fileId.asDriveFile();
-//                        com.google.android.gms.common.api.Status deleteStatus =
-//                                driveFile.delete(mGoogleApiClient).await();
-//                        if (!deleteStatus.isSuccess()) {
-//                            Log.e(TAG, "Unable to delete app data.");
-//
-//                        }
+
+
+
                         // Create an intent for the file chooser, and start it.
                         IntentSender intentSender = Drive.DriveApi
                                 .newCreateFileActivityBuilder()
@@ -187,7 +186,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
     public void onConnectionSuspended(int cause) {
         Log.i(TAG, "GoogleApiClient connection suspended");
     }
-    byte[] getDBBytes() {
+    public byte[] getDBBytes() {
         Context ctx = getApplicationContext();
         byte[] out = null;
         try {
