@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 import java.io.File;
@@ -27,6 +28,12 @@ public class VideoFullScreenActivity extends AppCompatActivity {
 
         videoView = (VideoView)findViewById(R.id.videoContent);
         videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
+        videoView.start();
+
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+
         videoView.start();
 
         backButton = (Button)findViewById(R.id.backButton);
