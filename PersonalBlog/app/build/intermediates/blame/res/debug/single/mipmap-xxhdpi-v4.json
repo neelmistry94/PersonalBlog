@@ -4,8 +4,20 @@
         "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxhdpi/numbutton.png"
     },
     {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/numbutton.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xxhdpi/numbutton.png"
+    },
+    {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/ic_launcher.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/add_picture.png",
         "source": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/src/main/res/mipmap-xxhdpi/add_picture.png"
+    },
+    {
+        "merged": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/add_picture.png",
+        "source": "/Users/danieldresner/Desktop/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/res/mipmap-xxhdpi/add_picture.png"
     },
     {
         "merged": "/Users/Terminator/Desktop/436Group/PersonalBlog/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/ic_launcher.png",

@@ -52,7 +52,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_TITLE + " TEXT," + TEXT + " TEXT," + PHOTO_PATH + " TEXT," + VIDEO_PATH + " TEXT,"
                 + AUDIO_PATH + " TEXT," + LOCATION_STRING + " TEXT" + ")";
 
+        String CREATE_PASSCODE_TABLE = "CREATE TABLE passcode (_id INTEGER PRIMARY KEY, _code INTEGER)";
+
         db.execSQL(CREATE_POSTS_TABLE);
+        db.execSQL(CREATE_PASSCODE_TABLE);
     }
 
 
@@ -69,7 +72,27 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
 
 
+    public int getPasscode(){
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        Cursor c  = db.rawQuery("SELECT * FROM passcode", null);
+        c.moveToFirst();
+        if(c.getCount() == 0){
+            return -1;
+        }
+        return c.getInt(1);
+    }
+    public void setPasscode(int code){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("_id",0);
+        cv.put("_code",code);
+
+        long tmp = db.insert("passcode", null,cv);
+        Log.e("DBMANAGER", "INSERT: " + tmp);
+        db.close();
+    }
 
     public void addViewPost(String titleParam, String textParam, String photoPathParam, String videoPathParam,
                             String audioPathParam, String locationString) {
@@ -88,6 +111,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close();
 
     }
+
+
+
+
 
     public ViewPost getViewPost(int id) {
         ViewPost tmp;

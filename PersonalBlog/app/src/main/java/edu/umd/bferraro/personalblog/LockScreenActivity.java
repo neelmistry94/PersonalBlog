@@ -20,12 +20,18 @@ public class LockScreenActivity extends Activity {
     ImageButton seven;
     TextView numText;
     int code = 0;
+    int passcode;
     Intent homePageIntent;
+    DatabaseManager dbManager;
 
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lock_screen);
+
+        dbManager = new DatabaseManager(this);
+        //dbManager.deleteDB();
+        passcode = dbManager.getPasscode();
 
         zero = (Button) findViewById(R.id.buttonKey0);
         one = (Button) findViewById(R.id.buttonKey1);
@@ -133,10 +139,14 @@ public class LockScreenActivity extends Activity {
         });
         unlock.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (code == 3861){
+                if(passcode == -1 || passcode == code){
+                    if(passcode == -1){
+                        dbManager.setPasscode(code);
+                    }
                     homePageIntent = new Intent(LockScreenActivity.this, HomePageActivity.class);
                     startActivityForResult(homePageIntent, 0);
                 }
+
                 else{
                     AlertDialog alertDialog = new AlertDialog.Builder(LockScreenActivity.this).create();
                     alertDialog.setTitle("Incorrect Passcode!");

@@ -190,7 +190,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
         Context ctx = getApplicationContext();
         byte[] out = null;
         try {
-            File from = new File(getFilesDir()+"the-file-name.txt");//ctx.getDatabasePath(ctx.getString(R.string.app_name));
+            File from = new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db");//ctx.getDatabasePath(ctx.getString(R.string.app_name));
             if (from.getAbsoluteFile().exists())
                 out = strm2Bytes(new FileInputStream(from));
         } catch (Exception e) {}
