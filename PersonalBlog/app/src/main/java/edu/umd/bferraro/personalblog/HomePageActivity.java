@@ -2,7 +2,9 @@ package edu.umd.bferraro.personalblog;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.view.View;
@@ -108,7 +110,18 @@ public class HomePageActivity extends ListActivity {
         //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                listItems);
+                listItems){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view =super.getView(position, convertView, parent);
+
+                TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                textView.setTextColor(Color.BLUE);
+
+                return view;
+            }
+        };
         setListAdapter(adapter);
         noPostsTextView.setVisibility(View.GONE);
     }
@@ -134,8 +147,6 @@ public class HomePageActivity extends ListActivity {
     {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
-
-        String title = (String) getListAdapter().getItem(position);
 
         ViewPost newViewPost = dbManager.getViewPost(position+1);
         newViewPost.setId(position+1);

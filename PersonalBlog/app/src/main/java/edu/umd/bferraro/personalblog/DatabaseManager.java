@@ -156,7 +156,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Log.e("DB", "getString(4) AFTER: " + c.getString(4));
 
 
-        tmp = new ViewPost(c.getString(0) + " - "+c.getString(1),c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6));
+        tmp = new ViewPost(c.getString(1),c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6));
         return tmp;
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PersonalBlog</string>
+    <string name="app_name">PocketDiary</string>
     <string name="action_settings">Settings</string>
 
     <string name="stop_recording_string">Stop Recording</string>

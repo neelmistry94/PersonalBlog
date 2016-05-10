@@ -2583,8 +2583,9 @@ containing a value of this type.
         public static final int add_location=0x7f030001;
         public static final int add_picture=0x7f030002;
         public static final int add_video=0x7f030003;
-        public static final int ic_launcher=0x7f030004;
-        public static final int numbutton=0x7f030005;
+        public static final int diarylauncher=0x7f030004;
+        public static final int ic_launcher=0x7f030005;
+        public static final int numbutton=0x7f030006;
     }
     public static final class raw {
         public static final int myfile=0x7f060000;

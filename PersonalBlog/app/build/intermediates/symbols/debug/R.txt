@@ -874,8 +874,9 @@ int mipmap add_audio 0x7f030000
 int mipmap add_location 0x7f030001
 int mipmap add_picture 0x7f030002
 int mipmap add_video 0x7f030003
-int mipmap ic_launcher 0x7f030004
-int mipmap numbutton 0x7f030005
+int mipmap diarylauncher 0x7f030004
+int mipmap ic_launcher 0x7f030005
+int mipmap numbutton 0x7f030006
 int raw myfile 0x7f060000
 int string abc_action_bar_home_description 0x7f070000
 int string abc_action_bar_home_description_format 0x7f070001
