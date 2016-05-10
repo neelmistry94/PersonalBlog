@@ -27,6 +27,7 @@
         <activity
             android:name="edu.umd.bferraro.personalblog.LockScreenActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +50,7 @@
         <activity
             android:name="edu.umd.bferraro.personalblog.ViewPostActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
 
             <!-- <intent-filter> -->
@@ -61,6 +63,7 @@
         <activity
             android:name="edu.umd.bferraro.personalblog.HomePageActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
 
             <!-- <intent-filter> -->
@@ -73,6 +76,7 @@
         <activity
             android:name="edu.umd.bferraro.personalblog.AudioRecord"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
@@ -81,6 +85,7 @@
         <activity
             android:name="edu.umd.bferraro.personalblog.DriveBackupActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
 
             <!-- <intent-filter> -->

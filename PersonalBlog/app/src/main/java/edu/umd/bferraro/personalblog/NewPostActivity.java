@@ -50,7 +50,6 @@ public class NewPostActivity extends Activity {
     Button backButton, postButton;
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false, image = false;
-    Intent viewPostIntent;
     DatabaseManager dbManager;
 
     private LocationManager mLocationManager;
@@ -218,20 +217,7 @@ public class NewPostActivity extends Activity {
                 textStr = postText.getText().toString();
 
                 Log.i(TAG, "Audio Path Post button: " + audioPath);
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath,
-                        locationString);
 
-                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
-                viewPostIntent.putExtra("ViewPost", newViewPost);
-
-                startActivityForResult(viewPostIntent, 0);
-
-//                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
-//
-//                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
-//                viewPostIntent.putExtra("ViewPost", newViewPost);
-//
-//                startActivityForResult(viewPostIntent, 0);
                 dbManager.addViewPost(titleStr, textStr, photoPath, videoPath, audioPath, locationString);
 
 

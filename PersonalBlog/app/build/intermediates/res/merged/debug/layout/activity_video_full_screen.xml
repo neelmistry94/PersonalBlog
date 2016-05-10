@@ -16,7 +16,8 @@
         android:id="@+id/backButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff" />
 
     <VideoView
         android:layout_width="fill_parent"
