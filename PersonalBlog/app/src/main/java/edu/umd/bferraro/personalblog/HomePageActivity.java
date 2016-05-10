@@ -45,12 +45,7 @@ public class HomePageActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-     //   setSupportActionBar(toolbar);
-
-
-
-         dbManager = new DatabaseManager(this);
+        dbManager = new DatabaseManager(this);
 
 //        Cursor c = dbManager.readAllNames();
 //        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
@@ -122,6 +117,12 @@ public class HomePageActivity extends ListActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == 0) {
+//            ViewPost temp = dbManager.getViewPost(0);
+//            Log.d("title", temp.getTitle());
+//            Log.d("text", temp.getTextPost());
+//            Log.d("photoPath", temp.getPhotoPath());
+//            Log.d("videoPath", temp.getVideoPath());
+
             ArrayList<String> listItems = new ArrayList<String>();
             listItems.add("Post 1");
 

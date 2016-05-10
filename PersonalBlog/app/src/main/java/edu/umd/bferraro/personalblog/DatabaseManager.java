@@ -29,6 +29,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     final static String[] columns = {KEY_ID, KEY_NAME};
 
+    // Posts Table Name
+    private static final String TABLE_POSTS = "posts";
+
+    // Posts Table Columns names
+    private static final String KEY_TITLE = "title";
+    private static final String TEXT = "text";
+    private static final String PHOTO_PATH = "photoPath";
+    private static final String VIDEO_PATH = "videoPath";
+    final static String [] postsColumn = {KEY_TITLE, TEXT, PHOTO_PATH, VIDEO_PATH};
+
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
@@ -39,11 +49,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.e("Personal Blog", "onCreate");
 
-        String CREATE_NAMES_TABLE = "CREATE TABLE " + TABLE_NAMES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
+        String CREATE_NAMES_TABLE = "CREATE TABLE " + TABLE_NAMES + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
 
-        System.out.println(CREATE_NAMES_TABLE);
+        String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT," + TEXT + " TEXT," + PHOTO_PATH + " TEXT," + VIDEO_PATH + " TEXT" + ")";
+        System.out.println(CREATE_POSTS_TABLE);
+
         db.execSQL(CREATE_NAMES_TABLE);
+        db.execSQL(CREATE_POSTS_TABLE);
     }
 
     // Upgrading database
@@ -57,6 +69,21 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+
+    // Adding new post
+    public void addPost(String titleParam, String textParam, String photoPathParam, String videoPathParam){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_TITLE, titleParam);
+        values.put(TEXT, textParam);
+        values.put(PHOTO_PATH, photoPathParam);
+        values.put(VIDEO_PATH, videoPathParam);
+
+        db.insert(TABLE_POSTS, null, values);
+        db.close();
+    }
+
 
     // Adding new contact
     public void addName(String name) {
@@ -97,6 +124,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // return name
         return name;
 
+    }
+
+    public ViewPost getViewPost(int id){
+        ViewPost viewPost;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_POSTS, new String[]{KEY_ID, KEY_TITLE, TEXT, PHOTO_PATH, VIDEO_PATH}, KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
+
+        viewPost = new ViewPost(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4), null);
+
+        return viewPost;
     }
 
     // Delete all records
@@ -153,8 +192,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public SQLiteDatabase getDB() {
-    SQLiteDatabase db = this.getReadableDatabase();
-    return db;
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db;
     }
 
 }

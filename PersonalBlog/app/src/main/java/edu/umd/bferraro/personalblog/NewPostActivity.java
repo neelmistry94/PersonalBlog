@@ -46,6 +46,7 @@ public class NewPostActivity extends Activity {
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false, image = false;
     Intent viewPostIntent;
+    DatabaseManager dbManager;
 
     private LocationManager mLocationManager;
     private LocationListener mLocationListener;
@@ -61,8 +62,7 @@ public class NewPostActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
-
-
+        dbManager = new DatabaseManager(this);
 
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
@@ -175,12 +175,13 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
-                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
-
-                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
-                viewPostIntent.putExtra("ViewPost", newViewPost);
-
-                startActivityForResult(viewPostIntent, 0);
+//                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
+//
+//                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
+//                viewPostIntent.putExtra("ViewPost", newViewPost);
+//
+//                startActivityForResult(viewPostIntent, 0);
+                dbManager.addPost(titleStr, textStr, photoPath, videoPath);
 
                 Toast.makeText(NewPostActivity.this, "Post Successful", Toast.LENGTH_LONG).show();
                 finish();
