@@ -4,16 +4,20 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
 
 /**
  * Created by danieldresner on 5/5/16.
  */
 public class LockScreenActivity extends Activity {
 
-    Button zero, one, two, three, four, five, six, seven, eight, nine, unlock, delete;
+    Button zero, one, two, three, four, five, six, eight, nine, unlock, delete;
+    ImageButton seven;
     TextView numText;
     int code = 0;
     Intent homePageIntent;
@@ -30,7 +34,7 @@ public class LockScreenActivity extends Activity {
         four = (Button) findViewById(R.id.buttonKey4);
         five = (Button) findViewById(R.id.buttonKey5);
         six = (Button) findViewById(R.id.buttonKey6);
-        seven = (Button) findViewById(R.id.buttonKey7);
+        seven = (ImageButton) findViewById(R.id.buttonKey7);
         eight = (Button) findViewById(R.id.buttonKey8);
         nine = (Button) findViewById(R.id.buttonKey9);
         unlock = (Button) findViewById(R.id.unlock);
@@ -151,7 +155,11 @@ public class LockScreenActivity extends Activity {
                 }
             }
         });
+//
+
 
     }
+
+
 
 }

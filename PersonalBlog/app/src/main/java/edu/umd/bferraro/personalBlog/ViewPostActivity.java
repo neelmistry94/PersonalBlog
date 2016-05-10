@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 
@@ -23,6 +24,7 @@ public class ViewPostActivity extends Activity {
     ImageView imageView;
     VideoView videoView;
     ViewPost viewPost;
+    Intent fullScreenIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,15 @@ public class ViewPostActivity extends Activity {
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
             imageView.setImageBitmap(bitmap);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fullScreenIntent = new Intent(ViewPostActivity.this, PhotoFullScreenActivity.class);
+                    fullScreenIntent.putExtra("ViewPost", viewPost);
+                    startActivityForResult(fullScreenIntent, 0);
+                }
+            });
         }
 
         //This sets the video of the new post
@@ -73,6 +84,16 @@ public class ViewPostActivity extends Activity {
         } else {
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
+
+            videoView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    fullScreenIntent = new Intent(ViewPostActivity.this, VideoFullScreenActivity.class);
+                    fullScreenIntent.putExtra("ViewPost", viewPost);
+                    startActivityForResult(fullScreenIntent, 0);
+                    return false;
+                }
+            });
         }
 
         //This sets the audio of the new post
@@ -119,7 +140,6 @@ public class ViewPostActivity extends Activity {
 //                }
             }
         });
-
     }
 
     @Override

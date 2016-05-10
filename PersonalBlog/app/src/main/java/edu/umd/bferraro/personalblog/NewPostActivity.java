@@ -3,7 +3,6 @@ package edu.umd.bferraro.personalblog;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,14 +24,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Executors;
-
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.content.pm.PackageManager;
-import android.Manifest;
+import java.util.concurrent.TimeUnit;
 
 
 public class NewPostActivity extends Activity {
@@ -57,6 +51,7 @@ public class NewPostActivity extends Activity {
     EditText title, postText;
     boolean photoLoaded = false, videoLoaded = false, image = false;
     Intent viewPostIntent;
+    DatabaseManager dbManager;
 
     private LocationManager mLocationManager;
     private LocationListener mLocationListener;
@@ -72,6 +67,7 @@ public class NewPostActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
+        dbManager = new DatabaseManager(this);
 
         title = (EditText) findViewById(R.id.titleEditText);
         postText = (EditText) findViewById(R.id.textEditText);
@@ -220,6 +216,7 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
+
                 Log.i(TAG, "Audio Path Post button: " + audioPath);
                 ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath,
                         locationString);
@@ -228,6 +225,15 @@ public class NewPostActivity extends Activity {
                 viewPostIntent.putExtra("ViewPost", newViewPost);
 
                 startActivityForResult(viewPostIntent, 0);
+
+//                ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
+//
+//                viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
+//                viewPostIntent.putExtra("ViewPost", newViewPost);
+//
+//                startActivityForResult(viewPostIntent, 0);
+                dbManager.addViewPost(titleStr, textStr, photoPath, videoPath, audioPath, locationString);
+
 
                 Toast.makeText(NewPostActivity.this, "Post Successful", Toast.LENGTH_LONG).show();
                 finish();
@@ -416,14 +422,14 @@ public class NewPostActivity extends Activity {
                     cursor.close();
 
                     addPicture.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
-                    photoPath = selectedImage.getPath();
+                    photoPath = getRealPathFromURI(selectedImage);
                     photoLoaded = true;
                 }
                 else if(selectedImage.toString().contains("video")){
                     newPostVideo = (VideoView)findViewById(R.id.videoView);
                     newPostVideo.setVideoURI(selectedImage);
                     newPostVideo.setAlpha(1);
-                    newPostVideo.start();
+                    //newPostVideo.start();
                     videoPath = getRealPathFromURI(selectedImage);
                     videoLoaded = true;
                 }
@@ -432,7 +438,7 @@ public class NewPostActivity extends Activity {
                 newPostVideo = (VideoView)findViewById(R.id.videoView);
                 newPostVideo.setVideoURI(selectedImage);
                 newPostVideo.setAlpha(1);
-                newPostVideo.start();
+                //newPostVideo.start();
                 videoPath = getRealPathFromURI(selectedImage);
                 videoLoaded = true;
             } else if (requestCode == REQUEST_AUDIO) {

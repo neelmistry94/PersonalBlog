@@ -32,7 +32,7 @@ public class HomePageActivity extends ListActivity {
     ListView postListView;
     Button newPostButton, backupButton,restoreButton;
     TextView noPostsTextView;
-    Intent newPostIntent;
+    Intent newPostIntent, backupIntent;
     ArrayAdapter<String> adapter;
     String name;
     DatabaseManager dbManager;
@@ -43,18 +43,13 @@ public class HomePageActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
         // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
      //   setSupportActionBar(toolbar);
 
 
          dbManager = new DatabaseManager(this);
 
-//        Cursor c = dbManager.readAllNames();
-//        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
-//                dbManager.columns, new int[] {R.id.id_col, R.id.name_col},
-//                0);
-
-     //   setListAdapter(mAdapter);
 
 
         postListView = getListView();
@@ -74,7 +69,8 @@ public class HomePageActivity extends ListActivity {
         backupButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                // TODO - Implement backup button
+                backupIntent = new Intent(HomePageActivity.this, DriveBackupActivity.class);
+                startActivityForResult(backupIntent, 0);
 
 
             }
@@ -119,6 +115,9 @@ public class HomePageActivity extends ListActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == 0) {
+            ViewPost temp = dbManager.getViewPost(2);
+
+
             ArrayList<String> listItems = new ArrayList<String>();
             listItems.add("Post 1");
 
