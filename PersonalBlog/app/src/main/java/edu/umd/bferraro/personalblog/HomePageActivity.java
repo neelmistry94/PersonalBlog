@@ -17,6 +17,17 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.*;
 
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.drive.DriveApi;
+import com.google.android.gms.drive.DriveContents;
+import com.google.android.gms.drive.DriveFile;
+import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.OpenFileActivityBuilder;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class HomePageActivity extends ListActivity {
@@ -123,13 +134,46 @@ public class HomePageActivity extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        ResultCallback<DriveApi.DriveContentsResult> contentsOpenedCallback =
+                new ResultCallback<DriveApi.DriveContentsResult>() {
+                    @Override
+                    public void onResult(DriveApi.DriveContentsResult result) {
+                        if (!result.getStatus().isSuccess()) {
+                            // display an error saying file can't be opened
+                            return;
+                        }
+                        // DriveContents object contains pointers
+                        // to the actual byte stream
+                        DriveContents contents = result.getDriveContents();
+                        try{
+                            InputStream is = contents.getInputStream();
+                            // write the inputStream to a FileOutputStream
+                            OutputStream outputStream = new FileOutputStream(new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db"));
+                            int read = 0;
+                            byte[] bytes = new byte[1024];
+
+                            while ((read = is.read(bytes)) != -1) {
+                                outputStream.write(bytes, 0, read);
+                            }
+                        }
+                        catch(Exception e){}
+                    }
+                };
+
+        if(requestCode == 2){
+            restoreIntent = new Intent(HomePageActivity.this, DriveRestoreActivity.class);
+            restoreIntent.putExtra("driveid",data.getStringExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID));
+            startActivityForResult(restoreIntent, 3);
+        }
+
         if(requestCode == 1){
             AlertDialog alertDialog = new AlertDialog.Builder(HomePageActivity.this).create();
             alertDialog.setTitle("Successfully backed up!");
             alertDialog.show();
             return;
         }
-        else if(requestCode == 0 || requestCode == 2) {
+        else if(requestCode == 0 || requestCode == 3) {
             populateTable();
         } else if (resultCode == 2){
             adapter.clear();
@@ -145,6 +189,6 @@ public class HomePageActivity extends ListActivity {
         ViewPost newViewPost = dbManager.getViewPost(position+1);
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);
-        startActivityForResult(viewPostIntent, 2);
+        startActivityForResult(viewPostIntent, 0);
     }
 }

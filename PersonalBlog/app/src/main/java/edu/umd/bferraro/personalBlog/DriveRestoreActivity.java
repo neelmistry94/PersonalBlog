@@ -11,7 +11,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.drive.DriveContents;
+import com.google.android.gms.drive.DriveResource;
+import com.google.android.gms.drive.Metadata;
 import com.google.android.gms.drive.OpenFileActivityBuilder;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.Drive.Files;
@@ -33,7 +36,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import com.google.api.services.drive.Drive;
+
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -112,44 +116,33 @@ public class DriveRestoreActivity extends Activity implements ConnectionCallback
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
 
-        ResultCallback<DriveContentsResult> contentsOpenedCallback =
-                new ResultCallback<DriveContentsResult>() {
-                    @Override
-                    public void onResult(DriveContentsResult result) {
-                        if (!result.getStatus().isSuccess()) {
-                            // display an error saying file can't be opened
-                            return;
-                        }
-                        // DriveContents object contains pointers
-                        // to the actual byte stream
-                        DriveContents contents = result.getDriveContents();
-                        try{
-                            InputStream is = contents.getInputStream();
-                            // write the inputStream to a FileOutputStream
-                            OutputStream outputStream = new FileOutputStream(new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db"));
-                            int read = 0;
-                            byte[] bytes = new byte[1024];
+        onResume();
 
-                            while ((read = is.read(bytes)) != -1) {
-                                outputStream.write(bytes, 0, read);
-                            }
-                        }
-                        catch(Exception e){}
-                    }
-                };
-
-        if(requestCode == 2){
-            DriveId driveid = DriveId.decodeFromString(data.getStringExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID));
-            DriveFile driveFile = driveid.asDriveFile();
-            driveFile.open(mGoogleApiClient,DriveFile.MODE_READ_ONLY,null).setResultCallback(contentsOpenedCallback);
+        DriveId driveId = (DriveId) data.getParcelableExtra(
+                OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);//this extra contains the drive id of the selected file
 
 
-            finish();
+//                    selected file (can also be a folder)
+        DriveFile selectedFile = com.google.android.gms.drive.Drive.DriveApi.getFile(mGoogleApiClient, driveId);
+
+        PendingResult<DriveApi.DriveContentsResult> selectedFileData = selectedFile.open(mGoogleApiClient, DriveFile.MODE_READ_ONLY, null);
+        DriveContentsResult result = selectedFileData.await();
+
+
+
+        try{
+            InputStream is = result.getDriveContents().getInputStream();
+            // write the inputStream to a FileOutputStream
+            OutputStream outputStream = new FileOutputStream(new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db"));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = is.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, read);
+            }
         }
-        // Called after a file is saved to Drive.
-        if (resultCode == RESULT_OK) {
-            finish();
-        }
+        catch(Exception e){}
+
 
 
     }
@@ -178,8 +171,10 @@ public class DriveRestoreActivity extends Activity implements ConnectionCallback
 
     @Override
     public void onConnected(Bundle connectionHint) {
-        restoreFromDrive();
-        finish();
+
+            restoreFromDrive();
+
+
     }
 
     @Override

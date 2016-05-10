@@ -46,6 +46,9 @@ public class LockScreenActivity extends Activity {
         delete = (Button) findViewById(R.id.delete);
 
         numText = (TextView) findViewById(R.id.textViewOutputScreen);
+        if(passcode == -1){
+            numText.setText("Set Code!");
+        }
 
         zero.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
