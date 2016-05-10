@@ -120,8 +120,8 @@ public class ViewPostActivity extends Activity {
             public void onClick(View view) {
                 finish();
 
-                String id = viewPost.getTitle().substring(0, 1);
-                dbManager.deleteViewPost(id);
+
+                dbManager.deleteViewPost(viewPost.getId());
 
                 textView = null;
                 titleView = null;

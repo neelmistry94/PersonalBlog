@@ -51,6 +51,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
 
     private GoogleApiClient mGoogleApiClient;
     private Bitmap mBitmapToSave;
+    DatabaseManager dbManager;
 
     /**
      * Create a new file and save it to Drive.
@@ -69,16 +70,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
                             Log.i(TAG, "Failed to create new contents.");
                             return;
                         }
-                        try{
-                            PrintWriter writer = new PrintWriter(getFilesDir()+"the-file-name.txt", "UTF-8");
-                            writer.println("The first line");
-                            writer.println("The second line");
-                            writer.close();
-                        }
-                        catch(Exception e){
-                            Log.i("THIS IS THE EXCEPTION",e.toString()+"kj");
 
-                        }
 
                         // Otherwise, we can write our data to the new contents.
                         Log.i(TAG, "New contents created.");
@@ -179,6 +171,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
 
     @Override
     public void onConnected(Bundle connectionHint) {
+        dbManager = new DatabaseManager(this);
         saveFileToDrive();
     }
 
@@ -190,7 +183,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
         Context ctx = getApplicationContext();
         byte[] out = null;
         try {
-            File from = new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db");//ctx.getDatabasePath(ctx.getString(R.string.app_name));
+            File from = new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db");
             if (from.getAbsoluteFile().exists())
                 out = strm2Bytes(new FileInputStream(from));
         } catch (Exception e) {}

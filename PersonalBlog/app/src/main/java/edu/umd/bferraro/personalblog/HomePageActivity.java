@@ -1,5 +1,6 @@
 package edu.umd.bferraro.personalblog;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,6 +26,11 @@ import android.view.View;
 import android.widget.*;
 import android.widget.Button;
 
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.drive.DriveFile;
+import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.OpenFileActivityBuilder;
+
 import java.util.ArrayList;
 
 public class HomePageActivity extends ListActivity {
@@ -32,7 +38,7 @@ public class HomePageActivity extends ListActivity {
     ListView postListView;
     Button newPostButton, backupButton,restoreButton;
     TextView noPostsTextView;
-    Intent newPostIntent, backupIntent;
+    Intent newPostIntent, backupIntent, restoreIntent;
     ArrayAdapter<String> adapter;
     String name;
     DatabaseManager dbManager;
@@ -77,7 +83,8 @@ public class HomePageActivity extends ListActivity {
 
         restoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // TODO - Implement restore button
+                restoreIntent = new Intent(HomePageActivity.this, DriveRestoreActivity.class);
+                startActivityForResult(restoreIntent, 2);
 
             }
         });
@@ -128,9 +135,12 @@ public class HomePageActivity extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
+            AlertDialog alertDialog = new AlertDialog.Builder(HomePageActivity.this).create();
+            alertDialog.setTitle("Successfully backed up!");
+            alertDialog.show();
             return;
         }
-        if(resultCode == 0) {
+        else if(requestCode == 0 || requestCode == 2) {
             populateTable();
         } else if (resultCode == 2){
             adapter.clear();
@@ -145,8 +155,8 @@ public class HomePageActivity extends ListActivity {
 
         String title = (String) getListAdapter().getItem(position);
 
-        ViewPost newViewPost = dbManager.getViewPost(Integer.parseInt(title.substring(0,1)));
-
+        ViewPost newViewPost = dbManager.getViewPost(position+1);
+        newViewPost.setId(position+1);
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);
         startActivityForResult(viewPostIntent, 2);

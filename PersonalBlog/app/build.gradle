@@ -27,3 +27,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-drive:8.4.0'
 
 }
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.apis:google-api-services-drive:v2-rev218-1.22.0'
+}
