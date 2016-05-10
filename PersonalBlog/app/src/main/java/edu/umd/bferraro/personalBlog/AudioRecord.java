@@ -23,9 +23,8 @@ public class AudioRecord extends Activity {
 
 
     private static final String TAG = "AudioRecord";
-    private static final String mFileName = Environment
-            .getExternalStorageDirectory().getAbsolutePath()
-            + "/audiorecordtest.3gp";
+    private static String mFileName;
+    private static int i = 0;
 
     private MediaRecorder mRecorder;
     private MediaPlayer mPlayer;
@@ -92,6 +91,11 @@ public class AudioRecord extends Activity {
 
     // Start recording with MediaRecorder
     private void startRecording() {
+        i++;
+        mFileName = Environment
+                .getExternalStorageDirectory().getAbsolutePath()
+                + "/audiorecordtest" + i + ".3gp";
+
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);

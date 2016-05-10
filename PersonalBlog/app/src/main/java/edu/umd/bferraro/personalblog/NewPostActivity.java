@@ -185,7 +185,7 @@ public class NewPostActivity extends Activity {
         addAudio = (ImageButton) findViewById(R.id.addAudioImageButton);
         addAudio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // TODO - implement addAudio button
+                // implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
                 startActivityForResult(i, REQUEST_AUDIO);
             }
@@ -437,8 +437,6 @@ public class NewPostActivity extends Activity {
                 videoLoaded = true;
             } else if (requestCode == REQUEST_AUDIO) {
                 // SET AUDIO PATH FILE
-              //  Uri selectedAudio = data.getData();
-//                audioPath = getRealPathFromURI(selectedAudio);
 
                 audioPath = data.getStringExtra("audioFile");
                 Log.e(TAG, "AUDIOPATH1: " + audioPath);

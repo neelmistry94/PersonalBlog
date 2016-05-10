@@ -78,17 +78,20 @@ public class ViewPostActivity extends Activity {
         //This sets the audio of the new post
         if (viewPost.getAudioPath() == null){
             voiceView.setVisibility(View.GONE);
-//            Log.d("ViewPostAct", viewPost.getAudioPath());
         } else {
             voiceView.setVisibility(View.VISIBLE);
-                Uri audioUri = Uri.parse(viewPost.getAudioPath());
-                Log.d("ViewPostAct", viewPost.getAudioPath());
-                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, audioUri);
-                if(mPlayer.isPlaying()){
-                    mPlayer.pause();
-                } else {
-                    mPlayer.start();
+            voiceView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Log.d("ViewPostAct", viewPost.getAudioPath());
+                    Uri audioUri = Uri.parse(viewPost.getAudioPath());
+                    MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, audioUri);
+                    if (mPlayer.isPlaying()) {
+                        mPlayer.pause();
+                    } else {
+                        mPlayer.start();
+                    }
                 }
+            });
         }
 
 
