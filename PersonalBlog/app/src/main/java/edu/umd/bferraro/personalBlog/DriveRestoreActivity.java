@@ -5,10 +5,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
+import com.google.android.gms.drive.DriveContents;
+import com.google.android.gms.drive.OpenFileActivityBuilder;
+import com.google.api.services.drive.Drive;
+import com.google.api.services.drive.Drive.Files;
+import com.google.api.services.drive.model.FileList;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.util.Log;
 import android.app.Activity;
 import android.content.Context;
@@ -21,14 +33,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-
+import com.google.api.services.drive.Drive;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.drive.Drive;
 import com.google.android.gms.drive.DriveApi;
 import com.google.android.gms.drive.DriveApi.DriveContentsResult;
 import com.google.android.gms.drive.DriveFile;
@@ -42,18 +53,30 @@ import com.google.android.gms.drive.query.SearchableField;
 public class DriveRestoreActivity extends Activity implements ConnectionCallbacks,
         OnConnectionFailedListener {
 
-    private static final String TAG = "drive backup";
+    private static final String TAG = "drive restore";
     private static final int REQUEST_CODE_CAPTURE_IMAGE = 1;
     private static final int REQUEST_CODE_CREATOR = 2;
     private static final int REQUEST_CODE_RESOLUTION = 3;
 
     private GoogleApiClient mGoogleApiClient;
-    private Bitmap mBitmapToSave;
 
-    /**
-     * Create a new file and save it to Drive.
-     */
+
+
+
+
     private void restoreFromDrive() {
+        IntentSender intentSender = com.google.android.gms.drive.Drive.DriveApi
+               .newOpenFileActivityBuilder().setMimeType(new String[]{"text/db"}).build(mGoogleApiClient);
+
+        try {
+
+            startIntentSenderForResult(intentSender, REQUEST_CODE_CREATOR, null, 0, 0, 0);
+
+        } catch (SendIntentException e) {
+            Log.i(TAG, "Failed to launch file chooser.");
+        }
+
+
 
 
     }
@@ -67,8 +90,8 @@ public class DriveRestoreActivity extends Activity implements ConnectionCallback
             // failures.
             // Since no account name is passed, the user is prompted to choose.
             mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addApi(Drive.API)
-                    .addScope(Drive.SCOPE_FILE)
+                    .addApi(com.google.android.gms.drive.Drive.API)
+                    .addScope(com.google.android.gms.drive.Drive.SCOPE_FILE)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .build();
@@ -85,15 +108,53 @@ public class DriveRestoreActivity extends Activity implements ConnectionCallback
         super.onPause();
     }
 
+
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
 
+        ResultCallback<DriveContentsResult> contentsOpenedCallback =
+                new ResultCallback<DriveContentsResult>() {
+                    @Override
+                    public void onResult(DriveContentsResult result) {
+                        if (!result.getStatus().isSuccess()) {
+                            // display an error saying file can't be opened
+                            return;
+                        }
+                        // DriveContents object contains pointers
+                        // to the actual byte stream
+                        DriveContents contents = result.getDriveContents();
+                        try{
+                            InputStream is = contents.getInputStream();
+                            // write the inputStream to a FileOutputStream
+                            OutputStream outputStream = new FileOutputStream(new File("/data/data/edu.umd.bferraro.personalblog/databases/PersonalBlogDB.db"));
+                            int read = 0;
+                            byte[] bytes = new byte[1024];
+
+                            while ((read = is.read(bytes)) != -1) {
+                                outputStream.write(bytes, 0, read);
+                            }
+                        }
+                        catch(Exception e){}
+                    }
+                };
+
+        if(requestCode == 2){
+            DriveId driveid = DriveId.decodeFromString(data.getStringExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID));
+            DriveFile driveFile = driveid.asDriveFile();
+            driveFile.open(mGoogleApiClient,DriveFile.MODE_READ_ONLY,null).setResultCallback(contentsOpenedCallback);
+
+
+            finish();
+        }
         // Called after a file is saved to Drive.
         if (resultCode == RESULT_OK) {
             finish();
         }
 
+
     }
+
+
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {

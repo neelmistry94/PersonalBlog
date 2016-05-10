@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.google.android.gms.drive.DriveId;
+
 /**
  * Created by neelmistry on 4/19/16.
  * Used the tutorial at the following website to create this code
@@ -54,8 +56,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         String CREATE_PASSCODE_TABLE = "CREATE TABLE passcode (_id INTEGER PRIMARY KEY, _code INTEGER)";
 
+        String CREATE_DRIVEID_TABLE = "CREATE TABLE driveid (_id INTEGER PRIMARY KEY, _driveid TEXT)";
+
         db.execSQL(CREATE_POSTS_TABLE);
         db.execSQL(CREATE_PASSCODE_TABLE);
+        db.execSQL(CREATE_DRIVEID_TABLE);
     }
 
 
@@ -70,7 +75,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void setDriveId(DriveId id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
 
+        cv.put("_id",0);
+        cv.put("_driveid", id.encodeToString());
+
+        long tmp = db.insert("driveid", null,cv);
+        Log.e("DBMANAGER", "INSERT: " + tmp);
+        db.close();
+    }
+
+    public DriveId getDriveId(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c  = db.rawQuery("SELECT * FROM passcode", null);
+        c.moveToFirst();
+        if(c.getCount() == 0){
+            return null;
+        }
+        return DriveId.decodeFromString(c.getString(1));
+    }
 
     public int getPasscode(){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -134,9 +160,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return tmp;
     }
 
-    public void deleteViewPost(String id){
+    public void deleteViewPost(int id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_POSTS, "_id = ? ", new String[]{id});
+        db.delete(TABLE_POSTS, "_id = ? ", new String[]{Integer.toString(id)});
+
     }
 
     // Delete all records

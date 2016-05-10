@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:1:39-78:12
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:1:39-85:12
 	package
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:2:1-40
 		INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml
@@ -30,7 +30,7 @@ ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalB
 	android:name
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:8:18-60
 application
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:1-76:15
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:11:1-83:15
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
@@ -127,14 +127,22 @@ ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalB
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:84-131
 	android:name
 		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:59:15-50
+activity#edu.umd.bferraro.personalblog.DriveRestoreActivity
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:66:5-72:16
+	android:label
+		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:66:52-84
+	android:theme
+		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:66:85-132
+	android:name
+		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:66:15-51
 activity#edu.umd.bferraro.personalblog.PhotoFullScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:74:5-57
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:81:5-57
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:74:15-54
+		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:81:15-54
 activity#edu.umd.bferraro.personalblog.VideoFullScreenActivity
-ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:75:5-57
+ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:82:5-57
 	android:name
-		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:75:15-54
+		ADDED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml:82:15-54
 uses-sdk
 INJECTED from /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/neelmistry/Desktop/CMSC436/PersonalBlog/PersonalBlog/PersonalBlog/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
