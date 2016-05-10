@@ -32,7 +32,7 @@ public class HomePageActivity extends ListActivity {
     ListView postListView;
     Button newPostButton, backupButton,restoreButton;
     TextView noPostsTextView;
-    Intent newPostIntent;
+    Intent newPostIntent, backupIntent;
     ArrayAdapter<String> adapter;
     String name;
     DatabaseManager dbManager;
@@ -51,6 +51,7 @@ public class HomePageActivity extends ListActivity {
 
 
          dbManager = new DatabaseManager(this);
+         //dbManager.deleteDatabase();
 
 //        Cursor c = dbManager.readAllNames();
 //        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,
@@ -77,7 +78,8 @@ public class HomePageActivity extends ListActivity {
         backupButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                // TODO - Implement backup button
+                backupIntent = new Intent(HomePageActivity.this, DriveBackupActivity.class);
+                startActivityForResult(backupIntent, 0);
 
 
             }
