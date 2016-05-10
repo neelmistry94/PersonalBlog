@@ -46,7 +46,7 @@ public class NewPostActivity extends Activity {
     private static final long FIVE_MIN = ONE_MIN * 5;
     private static final long MEASURE_TIME = 1000 * 30;
     private static final long POLLING_FREQ = 1000 * 10;
-    private static final float MIN_ACCURACY = 25.0f;
+    private static final float MIN_ACCURACY = 1.0f;
     private static final float MIN_LAST_READ_ACCURACY = 500.0f;
     private static final float MIN_DISTANCE = 10.0f;
 
@@ -79,8 +79,34 @@ public class NewPostActivity extends Activity {
         postText = (EditText) findViewById(R.id.textEditText);
 
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         // BEST READING
-//        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
+        //mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
+
+        mLocationListener = new LocationListener() {
+            // Called back when location changes
+            public void onLocationChanged(Location location) {
+
+                Log.e(TAG, "onLocationChange");
+                mBestReading = location;
+
+
+            }
+
+            public void onStatusChanged(String provider, int status,
+                                        Bundle extras) {
+                // NA
+            }
+
+            public void onProviderEnabled(String provider) {
+                // NA
+            }
+
+            public void onProviderDisabled(String provider) {
+                // NA
+            }
+        };
+
 
 
 
@@ -160,6 +186,7 @@ public class NewPostActivity extends Activity {
                 // implement addAudio button
                 Intent i = new Intent(NewPostActivity.this, AudioRecord.class);
                 startActivityForResult(i, REQUEST_AUDIO);
+                Log.i(TAG, audioPath);
             }
         });
         addLocation = (ImageButton) findViewById(R.id.addLocationImageButton);
@@ -167,8 +194,9 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 // TODO - implement addLocation button
 
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mLocationListener);
 
-
+               // Log.e(TAG, Double.toString(mBestReading.getLongitude()));
 
             }
         });
@@ -186,6 +214,7 @@ public class NewPostActivity extends Activity {
             public void onClick(View view) {
                 titleStr = title.getText().toString();
                 textStr = postText.getText().toString();
+                Log.i(TAG, "Audio Path " + audioPath);
                 ViewPost newViewPost = new ViewPost(titleStr, textStr, photoPath, videoPath, audioPath);
 
                 viewPostIntent = new Intent(NewPostActivity.this, ViewPostActivity.class);
@@ -198,6 +227,7 @@ public class NewPostActivity extends Activity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -309,6 +339,7 @@ public class NewPostActivity extends Activity {
                 // SET AUDIO PATH FILE
                 Uri selectedAudio = data.getData();
                 audioPath = getRealPathFromURI(selectedAudio);
+                Log.e(TAG, "AUDIOPATH: " + audioPath);
 
             }
         }
@@ -320,4 +351,7 @@ public class NewPostActivity extends Activity {
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
     }
+
+
+
 }

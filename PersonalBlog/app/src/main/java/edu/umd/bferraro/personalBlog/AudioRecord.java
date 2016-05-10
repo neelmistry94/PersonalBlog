@@ -22,8 +22,9 @@ public class AudioRecord extends Activity {
 
 
     private static final String TAG = "AudioRecord";
-    private static final String mFileName = R.raw.myfile
-            + "/audiorecord"+  ".3gp";
+    private static final String mFileName = Environment
+            .getExternalStorageDirectory().getAbsolutePath()
+            + "/audiorecordtest.3gp";
 
     private MediaRecorder mRecorder;
     private MediaPlayer mPlayer;
@@ -37,7 +38,6 @@ public class AudioRecord extends Activity {
         final ToggleButton mRecordButton = (ToggleButton) findViewById(R.id.record_button);
         final ToggleButton mPlayButton = (ToggleButton) findViewById(R.id.play_button);
 
-        Log.e(TAG, "HERE");
 
         // Set up record Button
         mRecordButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -92,12 +92,13 @@ public class AudioRecord extends Activity {
 
     // Start recording with MediaRecorder
     private void startRecording() {
-
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mRecorder.setOutputFile(mFileName);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        Log.e(TAG, mFileName);
 
         try {
             mRecorder.prepare();

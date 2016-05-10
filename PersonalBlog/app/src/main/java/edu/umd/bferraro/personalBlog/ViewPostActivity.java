@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,9 +78,12 @@ public class ViewPostActivity extends Activity {
         //This sets the audio of the new post
         if (viewPost.getAudioPath() == null){
             voiceView.setVisibility(View.GONE);
+            Log.d("ViewPostAct", viewPost.getAudioPath());
         } else {
             voiceView.setVisibility(View.VISIBLE);
-                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, R.raw.myfile);
+                Uri audioUri = Uri.parse(viewPost.getAudioPath());
+                Log.d("ViewPostAct", viewPost.getAudioPath());
+                MediaPlayer mPlayer = MediaPlayer.create(ViewPostActivity.this, audioUri);
                 if(mPlayer.isPlaying()){
                     mPlayer.pause();
                 } else {
