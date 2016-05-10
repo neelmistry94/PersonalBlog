@@ -95,7 +95,7 @@ public class DriveBackupActivity extends Activity implements ConnectionCallbacks
                         // Create the initial metadata - MIME type and title.
                         // Note that the user will be able to change the title later.
                         MetadataChangeSet metadataChangeSet = new MetadataChangeSet.Builder()
-                                .setMimeType("text/txt").setTitle("database").build();
+                                .setMimeType("text/db").setTitle("database.db").build();
 
 //                        DriveId fileId = DriveId.decodeFromString("database");
 //                        DriveFile driveFile = fileId.asDriveFile();

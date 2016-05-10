@@ -144,7 +144,7 @@ public class HomePageActivity extends ListActivity {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
 
-        ViewPost newViewPost = new ViewPost("Post 1", "Here is some text for my first post", null, null);
+        ViewPost newViewPost = new ViewPost("Post 1", "Here is some text for my first post", null, null, null);
 
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);
