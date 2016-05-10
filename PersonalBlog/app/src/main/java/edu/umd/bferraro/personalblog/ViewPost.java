@@ -9,7 +9,6 @@ import java.io.Serializable;
 public class ViewPost implements Serializable{
 
     private String title, textPost, photoPath, videoPath, audioPath, locationString;
-    int id;
 
     public ViewPost(String titleParam, String textParam, String photoParam, String videoParam, String
                     audioParam, String locParam){
@@ -45,8 +44,6 @@ public class ViewPost implements Serializable{
         return locationString;
     }
 
-    public int getId(){return id;}
-
     public void setTitle(String titleParam){
         title = titleParam;
     }
@@ -70,9 +67,4 @@ public class ViewPost implements Serializable{
     public void setLocationString(String locParam){
         locationString = locParam;
     }
-
-    public void setId(int id){
-        this.id = id;
-    }
-
 }

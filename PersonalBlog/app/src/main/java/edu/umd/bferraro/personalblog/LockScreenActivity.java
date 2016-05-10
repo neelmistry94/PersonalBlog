@@ -164,11 +164,5 @@ public class LockScreenActivity extends Activity {
                 }
             }
         });
-//
-
-
     }
-
-
-
 }

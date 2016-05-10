@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.view.View;
@@ -24,22 +26,14 @@ public class HomePageActivity extends ListActivity {
     TextView noPostsTextView;
     Intent newPostIntent, backupIntent, restoreIntent;
     ArrayAdapter<String> adapter;
-    String name;
     DatabaseManager dbManager;
-    private SimpleCursorAdapter mAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-     //   setSupportActionBar(toolbar);
-
-
         dbManager = new DatabaseManager(this);
-
 
         postListView = getListView();
         newPostButton = (Button) findViewById(R.id.newPostTextView);
@@ -117,7 +111,7 @@ public class HomePageActivity extends ListActivity {
 
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-                textView.setTextColor(Color.BLUE);
+                textView.setTextColor(Color.BLACK);
 
                 return view;
             }
@@ -149,7 +143,6 @@ public class HomePageActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         ViewPost newViewPost = dbManager.getViewPost(position+1);
-        newViewPost.setId(position+1);
         Intent viewPostIntent = new Intent(HomePageActivity.this, ViewPostActivity.class);
         viewPostIntent.putExtra("ViewPost", newViewPost);
         startActivityForResult(viewPostIntent, 2);

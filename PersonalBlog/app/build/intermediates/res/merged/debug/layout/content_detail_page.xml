@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:minHeight="40dp"
-    android:background="#B2EBF2">
+    android:background="#b9b8b2">
 
     <Button
         android:layout_width="wrap_content"

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -75,7 +76,7 @@ public class ViewPostActivity extends Activity {
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
             imageView.setImageBitmap(bitmap);
-
+            imageView.setBackgroundColor(Color.BLACK);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,6 +93,8 @@ public class ViewPostActivity extends Activity {
         } else {
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
+            videoView.setAlpha(1);
+            //videoView.setZOrderOnTop(true);
 
             videoView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -128,8 +131,7 @@ public class ViewPostActivity extends Activity {
             public void onClick(View view) {
                 finish();
 
-
-                dbManager.deleteViewPost(viewPost.getId());
+                dbManager.deleteViewPost(viewPost.getTitle());
 
                 textView = null;
                 titleView = null;

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="#B2EBF2">
+    android:background="#b9b8b2">
 
     <Button
         android:layout_width="wrap_content"

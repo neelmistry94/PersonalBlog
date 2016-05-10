@@ -160,10 +160,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return tmp;
     }
 
-    public void deleteViewPost(int id){
+    public void deleteViewPost(String title){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_POSTS, "_id = ? ", new String[]{Integer.toString(id)});
-
+        db.delete(TABLE_POSTS, "title = ? ", new String[]{title});
     }
 
     // Delete all records

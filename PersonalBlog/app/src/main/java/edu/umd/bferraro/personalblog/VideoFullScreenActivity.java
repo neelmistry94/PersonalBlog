@@ -23,6 +23,7 @@ public class VideoFullScreenActivity extends AppCompatActivity {
 
         videoView = (VideoView)findViewById(R.id.videoContent);
         videoView.setVideoURI(Uri.parse(viewPost.getVideoPath()));
+        videoView.setZOrderOnTop(true);
         videoView.start();
 
         MediaController mediaController = new MediaController(this);
@@ -38,5 +39,6 @@ public class VideoFullScreenActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }
