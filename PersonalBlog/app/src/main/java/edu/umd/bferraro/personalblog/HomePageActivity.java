@@ -46,6 +46,7 @@ public class HomePageActivity extends ListActivity {
         setContentView(R.layout.activity_home_page);
 
         dbManager = new DatabaseManager(this);
+      //  dbManager.deleteDatabase();
 
 //        Cursor c = dbManager.readAllNames();
 //        mAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout., c,

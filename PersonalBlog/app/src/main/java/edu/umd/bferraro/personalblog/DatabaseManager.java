@@ -49,12 +49,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.e("Personal Blog", "onCreate");
 
-        String CREATE_NAMES_TABLE = "CREATE TABLE " + TABLE_NAMES + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
+//        String CREATE_NAMES_TABLE = "CREATE TABLE " + TABLE_NAMES + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
 
         String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_POSTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT," + TEXT + " TEXT," + PHOTO_PATH + " TEXT," + VIDEO_PATH + " TEXT" + ")";
         System.out.println(CREATE_POSTS_TABLE);
 
-        db.execSQL(CREATE_NAMES_TABLE);
+//        db.execSQL(CREATE_NAMES_TABLE);
         db.execSQL(CREATE_POSTS_TABLE);
     }
 
