@@ -72,31 +72,22 @@ public class NewPostActivity extends Activity {
         dbManager = new DatabaseManager(this);
 
         title = (EditText) findViewById(R.id.titleEditText);
-//        title.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                imn.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-//                return  true;
-//            }
-//        });
         postText = (EditText) findViewById(R.id.textEditText);
-//        postText.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                imn.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-//                return  true;
-//            }
-//        });
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imn.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+            }
+        });
 
         mLocationListener = new LocationListener() {
             // Called back when location changes
             public void onLocationChanged(Location location) {
-                if (null == mBestReading
-                        || location.getAccuracy() < mBestReading.getAccuracy()) {
+                if (null == mBestReading || location.getAccuracy() < mBestReading.getAccuracy()) {
 
                     // Update best estimate
                     mBestReading = location;
